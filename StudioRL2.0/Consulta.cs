@@ -31,10 +31,11 @@ namespace StudioRL2._0
         string sombancelhaHenna = "N";
         string status = "Pago";
         bool pagar = false;
+
         public Consulta()
         {
             InitializeComponent();
-            //enable();
+            enable();
         }
 
         private void Consulta_Load(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace StudioRL2._0
                 mskTelCel.Text = data[5]; 
                 mskTelFixo.Text = data[4];
                 cboOperadora.Text = data[6];
+                disable();
             }
             else
             {
@@ -66,6 +68,12 @@ namespace StudioRL2._0
             if (chkPagar.Checked)
                 pagar = true;
             bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            enable();
+            sair();
         }
 
         private void verificaDados()
@@ -124,6 +132,49 @@ namespace StudioRL2._0
 
             btnConcluir.Enabled = false;
             btnEditar.Enabled = false;
+            btnBuscar.Enabled = true;
         }
+
+        private void disable()
+        {
+            chkCorte.Enabled = true;
+            chkBarba.Enabled = true;
+            chkGel.Enabled = true;
+            chkLapis.Enabled = true;
+            chkLuzes.Enabled = true;
+            chkPezinho.Enabled = true;
+            chkPigmentacaoBarba.Enabled = true;
+            chkPigmentacaoCorte.Enabled = true;
+            chkProgressiva.Enabled = true;
+            chkRelaxamento.Enabled = true;
+            chkSombrancelha.Enabled = true;
+            chkSombrancelhaHenna.Enabled = true;
+            chkPagar.Enabled = true;
+            chkFrequ.Enabled = true;
+
+            txtValor.Enabled = true;
+            txtApelido.Enabled = true;
+            txtNomeCompleto.Enabled = true;
+            txtEndereco.Enabled = true;
+            mskTelCel.Enabled = true;
+            mskTelFixo.Enabled = true;
+
+            btnConcluir.Enabled = true;
+            btnEditar.Enabled = true;
+            btnSair.Enabled = true;
+            btnBuscar.Enabled = false;
+        }
+
+        private void sair()
+        {
+            txtApelido.Clear();
+            txtNomeCompleto.Clear();
+            txtEndereco.Clear();
+            mskTelCel.Clear();
+            mskTelFixo.Clear();
+            txtNome.Clear();
+            cboOperadora.Text = "";
+        }
+        
     }
 }

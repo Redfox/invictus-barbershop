@@ -116,6 +116,7 @@
             this.txtApelido.ForeColor = System.Drawing.Color.Black;
             this.txtApelido.Location = new System.Drawing.Point(244, 66);
             this.txtApelido.Name = "txtApelido";
+            this.txtApelido.ReadOnly = true;
             this.txtApelido.Size = new System.Drawing.Size(422, 31);
             this.txtApelido.TabIndex = 5;
             // 
@@ -599,6 +600,7 @@
             this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // Consulta
             // 
