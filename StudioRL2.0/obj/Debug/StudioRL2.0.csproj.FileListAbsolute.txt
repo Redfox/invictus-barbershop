@@ -20,3 +20,6 @@ C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2.0.csproj.GenerateResource.Cache
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.Cadastro.resources
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.splash.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\bin\Debug\StudioRL2.0.exe.config
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2.0.exe
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2.0.pdb
