@@ -1,0 +1,22 @@
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\bin\Debug\StudioRL2.0.exe.config
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\bin\Debug\StudioRL2.0.exe
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\bin\Debug\StudioRL2.0.pdb
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2.0.csprojResolveAssemblyReference.cache
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2._0.Form1.resources
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2._0.Properties.Resources.resources
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2.0.csproj.GenerateResource.Cache
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2.0.exe
+c:\users\vitor & giovanni.valentin-sti\documents\visual studio 2015\Projects\StudioRL2.0\StudioRL2.0\obj\Debug\StudioRL2.0.pdb
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\bin\Debug\StudioRL2.0.exe.config
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2.0.exe
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2.0.pdb
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\bin\Debug\StudioRL2.0.exe
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\bin\Debug\StudioRL2.0.pdb
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\bin\Debug\MetroFramework.dll
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2.0.csprojResolveAssemblyReference.cache
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.Consulta.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.Form1.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.Properties.Resources.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2.0.csproj.GenerateResource.Cache
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.Cadastro.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\StudioRL\StudioRL2.0\obj\Debug\StudioRL2._0.splash.resources
