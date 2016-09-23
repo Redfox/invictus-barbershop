@@ -30,15 +30,16 @@ namespace StudioRL2._0
         string sombancelha = "N";
         string sombancelhaHenna = "N";
         string status = "Pago";
+        bool pagar = false;
         public Consulta()
         {
             InitializeComponent();
-            
+            //enable();
         }
-        
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
+        private void Consulta_Load(object sender, EventArgs e)
+        {
+            btnSair.Enabled = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -62,7 +63,9 @@ namespace StudioRL2._0
         private void btnConcluir_Click(object sender, EventArgs e)
         {
             verificaDados();
-            bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text);
+            if (chkPagar.Checked)
+                pagar = true;
+            bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
         }
 
         private void verificaDados()
@@ -75,6 +78,8 @@ namespace StudioRL2._0
                 gel = "S";
             if (chkLapis.Checked)
                 lapis = "S";
+            if (chkLuzes.Checked)
+                luzes = "S";
             if (chkPezinho.Checked)
                 pezinho = "S";
             if (chkPigmentacaoBarba.Checked)
@@ -91,6 +96,34 @@ namespace StudioRL2._0
                 sombancelhaHenna = "S";
             if (chkPagar.Checked)
                 status = "Em aberto";
+        }
+
+        private void enable()
+        {
+            chkCorte.Enabled = false;
+            chkBarba.Enabled = false;
+            chkGel.Enabled = false;
+            chkLapis.Enabled = false;
+            chkLuzes.Enabled = false;
+            chkPezinho.Enabled = false;
+            chkPigmentacaoBarba.Enabled = false;
+            chkPigmentacaoCorte.Enabled = false;
+            chkProgressiva.Enabled = false;
+            chkRelaxamento.Enabled = false;
+            chkSombrancelha.Enabled = false;
+            chkSombrancelhaHenna.Enabled = false;
+            chkPagar.Enabled = false;
+            chkFrequ.Enabled = false;
+
+            txtValor.Enabled = false;
+            txtApelido.Enabled = false;
+            txtNomeCompleto.Enabled = false;
+            txtEndereco.Enabled = false;
+            mskTelCel.Enabled = false;
+            mskTelFixo.Enabled = false;
+
+            btnConcluir.Enabled = false;
+            btnEditar.Enabled = false;
         }
     }
 }

@@ -72,6 +72,7 @@
             this.lblwhats = new System.Windows.Forms.Label();
             this.lblMensalista = new System.Windows.Forms.Label();
             this.chkWhats = new System.Windows.Forms.CheckBox();
+            this.btnSair = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -174,7 +175,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(411, 305);
+            this.label6.Location = new System.Drawing.Point(502, 219);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 25);
             this.label6.TabIndex = 10;
@@ -183,7 +184,7 @@
             // txtValor
             // 
             this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(512, 302);
+            this.txtValor.Location = new System.Drawing.Point(603, 216);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(109, 31);
             this.txtValor.TabIndex = 11;
@@ -191,18 +192,19 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "\"yyyy/MM/dd\"";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(105, 322);
+            this.dateTimePicker1.Location = new System.Drawing.Point(122, 319);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 24);
+            this.dateTimePicker1.Size = new System.Drawing.Size(100, 22);
             this.dateTimePicker1.TabIndex = 14;
             this.dateTimePicker1.Visible = false;
             // 
             // btnConcluir
             // 
             this.btnConcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConcluir.Location = new System.Drawing.Point(814, 299);
+            this.btnConcluir.Location = new System.Drawing.Point(905, 213);
             this.btnConcluir.Name = "btnConcluir";
             this.btnConcluir.Size = new System.Drawing.Size(113, 37);
             this.btnConcluir.TabIndex = 11;
@@ -223,7 +225,7 @@
             "20 Dias",
             "25 Dias",
             "30 Dias"});
-            this.cboFreq.Location = new System.Drawing.Point(138, 272);
+            this.cboFreq.Location = new System.Drawing.Point(152, 213);
             this.cboFreq.Name = "cboFreq";
             this.cboFreq.Size = new System.Drawing.Size(121, 26);
             this.cboFreq.TabIndex = 17;
@@ -232,7 +234,7 @@
             // 
             this.chkPagar.AutoSize = true;
             this.chkPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPagar.Location = new System.Drawing.Point(665, 302);
+            this.chkPagar.Location = new System.Drawing.Point(756, 216);
             this.chkPagar.Name = "chkPagar";
             this.chkPagar.Size = new System.Drawing.Size(108, 29);
             this.chkPagar.TabIndex = 10;
@@ -242,19 +244,20 @@
             // chkData
             // 
             this.chkData.AutoSize = true;
-            this.chkData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkData.Location = new System.Drawing.Point(25, 323);
             this.chkData.Name = "chkData";
-            this.chkData.Size = new System.Drawing.Size(106, 22);
+            this.chkData.Size = new System.Drawing.Size(91, 20);
             this.chkData.TabIndex = 13;
             this.chkData.Text = "Ediar Data";
             this.chkData.UseVisualStyleBackColor = true;
+            this.chkData.Visible = false;
             // 
             // chkFrequ
             // 
             this.chkFrequ.AutoSize = true;
             this.chkFrequ.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkFrequ.Location = new System.Drawing.Point(25, 276);
+            this.chkFrequ.Location = new System.Drawing.Point(39, 217);
             this.chkFrequ.Name = "chkFrequ";
             this.chkFrequ.Size = new System.Drawing.Size(100, 22);
             this.chkFrequ.TabIndex = 16;
@@ -265,7 +268,7 @@
             // 
             this.chkCorte.AutoSize = true;
             this.chkCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCorte.Location = new System.Drawing.Point(176, 34);
+            this.chkCorte.Location = new System.Drawing.Point(176, 50);
             this.chkCorte.Name = "chkCorte";
             this.chkCorte.Size = new System.Drawing.Size(83, 29);
             this.chkCorte.TabIndex = 0;
@@ -276,7 +279,7 @@
             // 
             this.chkLapis.AutoSize = true;
             this.chkLapis.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkLapis.Location = new System.Drawing.Point(176, 124);
+            this.chkLapis.Location = new System.Drawing.Point(426, 50);
             this.chkLapis.Name = "chkLapis";
             this.chkLapis.Size = new System.Drawing.Size(83, 29);
             this.chkLapis.TabIndex = 15;
@@ -287,7 +290,7 @@
             // 
             this.chkBarba.AutoSize = true;
             this.chkBarba.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBarba.Location = new System.Drawing.Point(176, 64);
+            this.chkBarba.Location = new System.Drawing.Point(264, 50);
             this.chkBarba.Name = "chkBarba";
             this.chkBarba.Size = new System.Drawing.Size(88, 29);
             this.chkBarba.TabIndex = 1;
@@ -298,7 +301,7 @@
             // 
             this.chkPezinho.AutoSize = true;
             this.chkPezinho.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPezinho.Location = new System.Drawing.Point(176, 184);
+            this.chkPezinho.Location = new System.Drawing.Point(608, 50);
             this.chkPezinho.Name = "chkPezinho";
             this.chkPezinho.Size = new System.Drawing.Size(109, 29);
             this.chkPezinho.TabIndex = 2;
@@ -309,7 +312,7 @@
             // 
             this.chkLuzes.AutoSize = true;
             this.chkLuzes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkLuzes.Location = new System.Drawing.Point(176, 154);
+            this.chkLuzes.Location = new System.Drawing.Point(514, 50);
             this.chkLuzes.Name = "chkLuzes";
             this.chkLuzes.Size = new System.Drawing.Size(89, 29);
             this.chkLuzes.TabIndex = 8;
@@ -320,7 +323,7 @@
             // 
             this.chkPigmentacaoBarba.AutoSize = true;
             this.chkPigmentacaoBarba.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPigmentacaoBarba.Location = new System.Drawing.Point(330, 20);
+            this.chkPigmentacaoBarba.Location = new System.Drawing.Point(722, 50);
             this.chkPigmentacaoBarba.Name = "chkPigmentacaoBarba";
             this.chkPigmentacaoBarba.Size = new System.Drawing.Size(219, 29);
             this.chkPigmentacaoBarba.TabIndex = 12;
@@ -331,7 +334,7 @@
             // 
             this.chkSombrancelha.AutoSize = true;
             this.chkSombrancelha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSombrancelha.Location = new System.Drawing.Point(330, 164);
+            this.chkSombrancelha.Location = new System.Drawing.Point(680, 99);
             this.chkSombrancelha.Name = "chkSombrancelha";
             this.chkSombrancelha.Size = new System.Drawing.Size(169, 29);
             this.chkSombrancelha.TabIndex = 5;
@@ -342,7 +345,7 @@
             // 
             this.chkPigmentacaoCorte.AutoSize = true;
             this.chkPigmentacaoCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPigmentacaoCorte.Location = new System.Drawing.Point(330, 56);
+            this.chkPigmentacaoCorte.Location = new System.Drawing.Point(77, 99);
             this.chkPigmentacaoCorte.Name = "chkPigmentacaoCorte";
             this.chkPigmentacaoCorte.Size = new System.Drawing.Size(214, 29);
             this.chkPigmentacaoCorte.TabIndex = 3;
@@ -353,7 +356,7 @@
             // 
             this.chkSombrancelhaHenna.AutoSize = true;
             this.chkSombrancelhaHenna.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSombrancelhaHenna.Location = new System.Drawing.Point(330, 200);
+            this.chkSombrancelhaHenna.Location = new System.Drawing.Point(878, 99);
             this.chkSombrancelhaHenna.Name = "chkSombrancelhaHenna";
             this.chkSombrancelhaHenna.Size = new System.Drawing.Size(268, 29);
             this.chkSombrancelhaHenna.TabIndex = 4;
@@ -364,7 +367,7 @@
             // 
             this.chkGel.AutoSize = true;
             this.chkGel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkGel.Location = new System.Drawing.Point(176, 94);
+            this.chkGel.Location = new System.Drawing.Point(357, 50);
             this.chkGel.Name = "chkGel";
             this.chkGel.Size = new System.Drawing.Size(64, 29);
             this.chkGel.TabIndex = 9;
@@ -375,7 +378,7 @@
             // 
             this.chkRelaxamento.AutoSize = true;
             this.chkRelaxamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRelaxamento.Location = new System.Drawing.Point(330, 128);
+            this.chkRelaxamento.Location = new System.Drawing.Point(494, 99);
             this.chkRelaxamento.Name = "chkRelaxamento";
             this.chkRelaxamento.Size = new System.Drawing.Size(157, 29);
             this.chkRelaxamento.TabIndex = 6;
@@ -386,7 +389,7 @@
             // 
             this.chkProgressiva.AutoSize = true;
             this.chkProgressiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkProgressiva.Location = new System.Drawing.Point(330, 92);
+            this.chkProgressiva.Location = new System.Drawing.Point(320, 99);
             this.chkProgressiva.Name = "chkProgressiva";
             this.chkProgressiva.Size = new System.Drawing.Size(145, 29);
             this.chkProgressiva.TabIndex = 7;
@@ -586,12 +589,24 @@
             this.chkWhats.UseVisualStyleBackColor = true;
             this.chkWhats.Visible = false;
             // 
+            // btnSair
+            // 
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.Black;
+            this.btnSair.Location = new System.Drawing.Point(683, 69);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(102, 40);
+            this.btnSair.TabIndex = 8;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            // 
             // Consulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1251, 568);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtApelido);
             this.Controls.Add(this.label2);
@@ -601,6 +616,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Consulta";
             this.Text = "Consult";
+            this.Load += new System.EventHandler(this.Consulta_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -657,5 +673,6 @@
         private System.Windows.Forms.Label lblwhats;
         private System.Windows.Forms.Label lblMensalista;
         private System.Windows.Forms.CheckBox chkWhats;
+        private System.Windows.Forms.Button btnSair;
     }
 }

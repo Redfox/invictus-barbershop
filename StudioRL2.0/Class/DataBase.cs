@@ -122,7 +122,7 @@ namespace StudioRL2._0.Class
             return data;
         }
 
-        public void cadastarConsulta(string ID_Cliente, string Corte, string Barba, string Pezinho, string Sombrancelha, string SombrancelhaHenna, string Relaxamento, string Progressiva, string PigmentacaoCorte, string PigmentacaoBarba, string Luzes, string Gel, string Lapis, string Valor, string Status, string valorapagar)
+        public void cadastarConsulta(string ID_Cliente, string Corte, string Barba, string Pezinho, string Sombrancelha, string SombrancelhaHenna, string Relaxamento, string Progressiva, string PigmentacaoCorte, string PigmentacaoBarba, string Luzes, string Gel, string Lapis, string Valor, string Status, string valorapagar, bool apagar)
         {
             DateTime time = DateTime.Now;
             try
@@ -130,17 +130,36 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                string SQL = "insert into Historico(ID_Cliente, DataC, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna, Relaxamento, Progressiva, PigmentacaoCorte, PigmentacaoBarba, Luzes, Gel, Lapis, Valor, ValorPago, Status, ValorEmAberto) value('" + ID_Cliente + "', '" + time.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Corte + "', '" + Barba + "', '" + Pezinho + "', '" + Sombrancelha + "', '" + SombrancelhaHenna + "', '" + Relaxamento + "', '" + Progressiva + "', '" + PigmentacaoCorte + "', '" + PigmentacaoBarba + "', '" + Luzes + "', '" + Gel + "', '" + Lapis + "', '" + Valor + "', 0, '" + Status + "', '" + valorapagar + "')";
-                cmd.CommandText = SQL;
-                cmd.ExecuteNonQuery();
+                if (apagar == true)
+                {
+                    string SQL = "insert into Historico(ID_Cliente, DataC, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna, Relaxamento, Progressiva, PigmentacaoCorte, PigmentacaoBarba, Luzes, Gel, Lapis, Valor, ValorPago, Status, ValorEmAberto) value('" + ID_Cliente + "', '" + time.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Corte + "', '" + Barba + "', '" + Pezinho + "', '" + Sombrancelha + "', '" + SombrancelhaHenna + "', '" + Relaxamento + "', '" + Progressiva + "', '" + PigmentacaoCorte + "', '" + PigmentacaoBarba + "', '" + Luzes + "', '" + Gel + "', '" + Lapis + "', '" + Valor + "', 0, '" + Status + "', '" + valorapagar + "')";
+                    cmd.CommandText = SQL;
+                    cmd.ExecuteNonQuery();
 
+                    SQL = "update clientes set ValoraPagar = ValoraPagar + '" + Valor + "' where ID_Cliente like '" + ID_Cliente + "'";
+                    cmd.CommandText = SQL;
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("a pagar");
+                }
+                else if(apagar == false)
+                {
+                    string SQL = "insert into Historico(ID_Cliente, DataC, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna, Relaxamento, Progressiva, PigmentacaoCorte, PigmentacaoBarba, Luzes, Gel, Lapis, Valor, ValorPago, Status, ValorEmAberto) value('" + ID_Cliente + "', '" + time.ToString("yyyy-MM-dd HH:mm:ss") + "','" + Corte + "', '" + Barba + "', '" + Pezinho + "', '" + Sombrancelha + "', '" + SombrancelhaHenna + "', '" + Relaxamento + "', '" + Progressiva + "', '" + PigmentacaoCorte + "', '" + PigmentacaoBarba + "', '" + Luzes + "', '" + Gel + "', '" + Lapis + "', '" + Valor + "', '"+ Valor + "', '" + Status + "', 0)";
+                    cmd.CommandText = SQL;
+                    cmd.ExecuteNonQuery();
+
+                    SQL = "update clientes set ValorPago = ValorPago + '" + Valor + "' where ID_Cliente like '" + ID_Cliente + "'";
+                    cmd.CommandText = SQL;
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("pago");
+                }
+                
+                
                 MessageBox.Show("Consulta salva com sucesso");
             }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message);
             }
-            
         }
     }
 }
