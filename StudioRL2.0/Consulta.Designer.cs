@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -56,6 +59,9 @@
             this.chkRelaxamento = new System.Windows.Forms.CheckBox();
             this.chkProgressiva = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEditarObs = new System.Windows.Forms.Button();
+            this.txtObs = new System.Windows.Forms.TextBox();
             this.chkInfantil = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cboOperadora = new System.Windows.Forms.ComboBox();
@@ -70,13 +76,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.chkWhats = new System.Windows.Forms.CheckBox();
             this.btnSair = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtObs = new System.Windows.Forms.TextBox();
-            this.btnEditarObs = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridPagamento = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPagamento)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
@@ -136,6 +143,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 133);
             this.tabControl1.Name = "tabControl1";
@@ -422,6 +430,37 @@
             this.tabPage2.Text = "Dados do Cliente";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnEditarObs);
+            this.groupBox1.Controls.Add(this.txtObs);
+            this.groupBox1.Location = new System.Drawing.Point(843, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(325, 333);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Observações";
+            // 
+            // btnEditarObs
+            // 
+            this.btnEditarObs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarObs.Location = new System.Drawing.Point(108, 291);
+            this.btnEditarObs.Name = "btnEditarObs";
+            this.btnEditarObs.Size = new System.Drawing.Size(113, 36);
+            this.btnEditarObs.TabIndex = 27;
+            this.btnEditarObs.Text = "Editar";
+            this.btnEditarObs.UseVisualStyleBackColor = true;
+            this.btnEditarObs.Click += new System.EventHandler(this.btnEditarObs_Click);
+            // 
+            // txtObs
+            // 
+            this.txtObs.Location = new System.Drawing.Point(15, 28);
+            this.txtObs.Multiline = true;
+            this.txtObs.Name = "txtObs";
+            this.txtObs.ReadOnly = true;
+            this.txtObs.Size = new System.Drawing.Size(304, 257);
+            this.txtObs.TabIndex = 0;
+            // 
             // chkInfantil
             // 
             this.chkInfantil.AutoSize = true;
@@ -576,36 +615,49 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // groupBox1
+            // tabPage3
             // 
-            this.groupBox1.Controls.Add(this.btnEditarObs);
-            this.groupBox1.Controls.Add(this.txtObs);
-            this.groupBox1.Location = new System.Drawing.Point(843, 16);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 333);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Observações";
+            this.tabPage3.Controls.Add(this.dataGridPagamento);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1174, 355);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Dados Pagamento";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txtObs
+            // dataGridPagamento
             // 
-            this.txtObs.Location = new System.Drawing.Point(15, 28);
-            this.txtObs.Multiline = true;
-            this.txtObs.Name = "txtObs";
-            this.txtObs.ReadOnly = true;
-            this.txtObs.Size = new System.Drawing.Size(304, 257);
-            this.txtObs.TabIndex = 0;
-            // 
-            // btnEditarObs
-            // 
-            this.btnEditarObs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarObs.Location = new System.Drawing.Point(108, 291);
-            this.btnEditarObs.Name = "btnEditarObs";
-            this.btnEditarObs.Size = new System.Drawing.Size(113, 36);
-            this.btnEditarObs.TabIndex = 27;
-            this.btnEditarObs.Text = "Editar";
-            this.btnEditarObs.UseVisualStyleBackColor = true;
-            this.btnEditarObs.Click += new System.EventHandler(this.btnEditarObs_Click);
+            this.dataGridPagamento.AllowUserToAddRows = false;
+            this.dataGridPagamento.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPagamento.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridPagamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridPagamento.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridPagamento.Location = new System.Drawing.Point(21, 31);
+            this.dataGridPagamento.Name = "dataGridPagamento";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPagamento.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridPagamento.Size = new System.Drawing.Size(1135, 197);
+            this.dataGridPagamento.TabIndex = 0;
             // 
             // Consulta
             // 
@@ -631,6 +683,8 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPagamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,5 +737,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtObs;
         private System.Windows.Forms.Button btnEditarObs;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridPagamento;
     }
 }

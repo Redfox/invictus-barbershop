@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Odbc;
 using System.Windows.Forms;
 using StudioRL2._0.Class;
 
@@ -76,8 +71,8 @@ namespace StudioRL2._0
                     chkMensalista.Visible = true;
                     chkMensalista.Checked = true;
                 }
-                    
 
+                preencherGrid();
                 enable();
             }
             else
@@ -287,6 +282,37 @@ namespace StudioRL2._0
                 }
             }
         }
-        
+
+        private void preencherGrid()
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                OdbcDataAdapter adapter = new OdbcDataAdapter("", conexao);
+                DataSet ds = new DataSet();
+                conexao.Open();
+
+                cmd = new OdbcCommand("Select ID as 'ID do Corte', DataC as 'Data do corte', Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis, Valor, ValorEmAberto, Status from historico where ID_Cliente like '" + data[0] + "' and Status like 'Em aberto' or Status like 'Em Processo'", conexao);
+
+                adapter = new OdbcDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds, "clientes");
+
+                dataGridPagamento.DataMember = "clientes";
+
+                dataGridPagamento.DataSource = ds;
+                dataGridPagamento.DataMember = "clientes";
+
+                dataGridPagamento.Columns[0].Visible = false;
+
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+
+        }
     }
 }

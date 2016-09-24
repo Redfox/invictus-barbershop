@@ -33,3 +33,5 @@ C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\ob
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2._0.Properties.Resources.resources
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2._0.splash.resources
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2.0.csproj.GenerateResource.Cache
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\bin\Debug\MetroFramework.Design.dll
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\bin\Debug\MetroFramework.Fonts.dll

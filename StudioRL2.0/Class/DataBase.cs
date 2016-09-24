@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 using System.Data.Odbc;
-using StudioRL2._0.Class;
 
 namespace StudioRL2._0.Class
 {
@@ -199,6 +195,6 @@ namespace StudioRL2._0.Class
                 MessageBox.Show(erro.Message);
             }
             
-        }
+        }        
     }
 }
