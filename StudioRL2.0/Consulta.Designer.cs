@@ -57,7 +57,6 @@
             this.chkProgressiva = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chkInfantil = new System.Windows.Forms.CheckBox();
-            this.lblInfantil = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cboOperadora = new System.Windows.Forms.ComboBox();
             this.txtNomeCompleto = new System.Windows.Forms.TextBox();
@@ -69,13 +68,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblwhats = new System.Windows.Forms.Label();
-            this.lblMensalista = new System.Windows.Forms.Label();
             this.chkWhats = new System.Windows.Forms.CheckBox();
             this.btnSair = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtObs = new System.Windows.Forms.TextBox();
+            this.btnEditarObs = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNome
@@ -399,8 +400,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.chkInfantil);
-            this.tabPage2.Controls.Add(this.lblInfantil);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.cboOperadora);
             this.tabPage2.Controls.Add(this.txtNomeCompleto);
@@ -412,8 +413,6 @@
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btnEditar);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.lblwhats);
-            this.tabPage2.Controls.Add(this.lblMensalista);
             this.tabPage2.Controls.Add(this.chkWhats);
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
@@ -427,29 +426,20 @@
             // 
             this.chkInfantil.AutoSize = true;
             this.chkInfantil.Enabled = false;
-            this.chkInfantil.Location = new System.Drawing.Point(256, 219);
+            this.chkInfantil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkInfantil.Location = new System.Drawing.Point(467, 130);
             this.chkInfantil.Name = "chkInfantil";
-            this.chkInfantil.Size = new System.Drawing.Size(15, 14);
+            this.chkInfantil.Size = new System.Drawing.Size(94, 29);
             this.chkInfantil.TabIndex = 25;
+            this.chkInfantil.Text = "Infantil";
             this.chkInfantil.UseVisualStyleBackColor = true;
             this.chkInfantil.Visible = false;
-            // 
-            // lblInfantil
-            // 
-            this.lblInfantil.AutoSize = true;
-            this.lblInfantil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfantil.Location = new System.Drawing.Point(277, 214);
-            this.lblInfantil.Name = "lblInfantil";
-            this.lblInfantil.Size = new System.Drawing.Size(75, 25);
-            this.lblInfantil.TabIndex = 24;
-            this.lblInfantil.Text = "Infantil";
-            this.lblInfantil.Visible = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(365, 42);
+            this.label7.Location = new System.Drawing.Point(229, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 25);
             this.label7.TabIndex = 10;
@@ -466,7 +456,7 @@
             "Oi",
             "Claro",
             "Nextel"});
-            this.cboOperadora.Location = new System.Drawing.Point(603, 124);
+            this.cboOperadora.Location = new System.Drawing.Point(467, 168);
             this.cboOperadora.Name = "cboOperadora";
             this.cboOperadora.Size = new System.Drawing.Size(113, 32);
             this.cboOperadora.TabIndex = 23;
@@ -474,7 +464,7 @@
             // txtNomeCompleto
             // 
             this.txtNomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeCompleto.Location = new System.Drawing.Point(448, 39);
+            this.txtNomeCompleto.Location = new System.Drawing.Point(312, 41);
             this.txtNomeCompleto.Name = "txtNomeCompleto";
             this.txtNomeCompleto.ReadOnly = true;
             this.txtNomeCompleto.Size = new System.Drawing.Size(457, 31);
@@ -483,10 +473,13 @@
             // chkMensalista
             // 
             this.chkMensalista.AutoSize = true;
-            this.chkMensalista.Location = new System.Drawing.Point(372, 225);
+            this.chkMensalista.Enabled = false;
+            this.chkMensalista.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMensalista.Location = new System.Drawing.Point(608, 129);
             this.chkMensalista.Name = "chkMensalista";
-            this.chkMensalista.Size = new System.Drawing.Size(15, 14);
+            this.chkMensalista.Size = new System.Drawing.Size(135, 29);
             this.chkMensalista.TabIndex = 22;
+            this.chkMensalista.Text = "Mensalista";
             this.chkMensalista.UseVisualStyleBackColor = true;
             this.chkMensalista.Visible = false;
             // 
@@ -494,7 +487,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(338, 86);
+            this.label3.Location = new System.Drawing.Point(202, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 25);
             this.label3.TabIndex = 12;
@@ -502,7 +495,7 @@
             // 
             // mskTelFixo
             // 
-            this.mskTelFixo.Location = new System.Drawing.Point(450, 127);
+            this.mskTelFixo.Location = new System.Drawing.Point(314, 129);
             this.mskTelFixo.Mask = "(##)####-####";
             this.mskTelFixo.Name = "mskTelFixo";
             this.mskTelFixo.ReadOnly = true;
@@ -512,7 +505,7 @@
             // txtEndereco
             // 
             this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndereco.Location = new System.Drawing.Point(448, 83);
+            this.txtEndereco.Location = new System.Drawing.Point(312, 85);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.ReadOnly = true;
             this.txtEndereco.Size = new System.Drawing.Size(457, 31);
@@ -520,7 +513,7 @@
             // 
             // mskTelCel
             // 
-            this.mskTelCel.Location = new System.Drawing.Point(450, 170);
+            this.mskTelCel.Location = new System.Drawing.Point(314, 172);
             this.mskTelCel.Mask = "(##)#####-####";
             this.mskTelCel.Name = "mskTelCel";
             this.mskTelCel.ReadOnly = true;
@@ -531,7 +524,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(301, 129);
+            this.label4.Location = new System.Drawing.Point(165, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 25);
             this.label4.TabIndex = 14;
@@ -540,53 +533,34 @@
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(1013, 304);
+            this.btnEditar.Location = new System.Drawing.Point(641, 279);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(113, 36);
             this.btnEditar.TabIndex = 16;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(277, 173);
+            this.label5.Location = new System.Drawing.Point(141, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(170, 25);
             this.label5.TabIndex = 16;
             this.label5.Text = "Telefone Celular";
             // 
-            // lblwhats
-            // 
-            this.lblwhats.AutoSize = true;
-            this.lblwhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblwhats.Location = new System.Drawing.Point(551, 219);
-            this.lblwhats.Name = "lblwhats";
-            this.lblwhats.Size = new System.Drawing.Size(111, 25);
-            this.lblwhats.TabIndex = 19;
-            this.lblwhats.Text = "WhatsApp";
-            this.lblwhats.Visible = false;
-            // 
-            // lblMensalista
-            // 
-            this.lblMensalista.AutoSize = true;
-            this.lblMensalista.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensalista.Location = new System.Drawing.Point(393, 218);
-            this.lblMensalista.Name = "lblMensalista";
-            this.lblMensalista.Size = new System.Drawing.Size(124, 25);
-            this.lblMensalista.TabIndex = 17;
-            this.lblMensalista.Text = "*Mensalista";
-            this.lblMensalista.Visible = false;
-            // 
             // chkWhats
             // 
             this.chkWhats.AutoSize = true;
             this.chkWhats.Enabled = false;
-            this.chkWhats.Location = new System.Drawing.Point(535, 225);
+            this.chkWhats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWhats.Location = new System.Drawing.Point(608, 168);
             this.chkWhats.Name = "chkWhats";
-            this.chkWhats.Size = new System.Drawing.Size(15, 14);
+            this.chkWhats.Size = new System.Drawing.Size(92, 29);
             this.chkWhats.TabIndex = 18;
+            this.chkWhats.Text = "Whats";
             this.chkWhats.UseVisualStyleBackColor = true;
             this.chkWhats.Visible = false;
             // 
@@ -601,6 +575,37 @@
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnEditarObs);
+            this.groupBox1.Controls.Add(this.txtObs);
+            this.groupBox1.Location = new System.Drawing.Point(843, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(325, 333);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Observações";
+            // 
+            // txtObs
+            // 
+            this.txtObs.Location = new System.Drawing.Point(15, 28);
+            this.txtObs.Multiline = true;
+            this.txtObs.Name = "txtObs";
+            this.txtObs.ReadOnly = true;
+            this.txtObs.Size = new System.Drawing.Size(304, 257);
+            this.txtObs.TabIndex = 0;
+            // 
+            // btnEditarObs
+            // 
+            this.btnEditarObs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarObs.Location = new System.Drawing.Point(108, 291);
+            this.btnEditarObs.Name = "btnEditarObs";
+            this.btnEditarObs.Size = new System.Drawing.Size(113, 36);
+            this.btnEditarObs.TabIndex = 27;
+            this.btnEditarObs.Text = "Editar";
+            this.btnEditarObs.UseVisualStyleBackColor = true;
+            this.btnEditarObs.Click += new System.EventHandler(this.btnEditarObs_Click);
             // 
             // Consulta
             // 
@@ -624,6 +629,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -660,7 +667,6 @@
         private System.Windows.Forms.CheckBox chkSombrancelha;
         private System.Windows.Forms.CheckBox chkPigmentacaoCorte;
         private System.Windows.Forms.CheckBox chkInfantil;
-        private System.Windows.Forms.Label lblInfantil;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboOperadora;
         private System.Windows.Forms.TextBox txtNomeCompleto;
@@ -672,9 +678,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblwhats;
-        private System.Windows.Forms.Label lblMensalista;
         private System.Windows.Forms.CheckBox chkWhats;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtObs;
+        private System.Windows.Forms.Button btnEditarObs;
     }
 }

@@ -30,12 +30,17 @@ namespace StudioRL2._0
         string sombancelha = "N";
         string sombancelhaHenna = "N";
         string status = "Pago";
+        string whats = "N";
+        string infantil = "N";
+        string mensalista = "N";
         bool pagar = false;
+        bool editando = false;
+        bool editandoObs = false;
 
         public Consulta()
         {
             InitializeComponent();
-            enable();
+            disable();
         }
 
         private void Consulta_Load(object sender, EventArgs e)
@@ -54,7 +59,26 @@ namespace StudioRL2._0
                 mskTelCel.Text = data[5]; 
                 mskTelFixo.Text = data[4];
                 cboOperadora.Text = data[6];
-                disable();
+                txtObs.Text = data[12];
+
+                if (data[7] == "S")
+                {
+                    chkWhats.Visible = true;
+                    chkWhats.Checked = true;
+                }
+                if (data[9] == "S")
+                {
+                    chkInfantil.Visible = true;
+                    chkInfantil.Checked = true;
+                }
+                if (data[10] == "S")
+                {
+                    chkMensalista.Visible = true;
+                    chkMensalista.Checked = true;
+                }
+                    
+
+                enable();
             }
             else
             {
@@ -76,6 +100,26 @@ namespace StudioRL2._0
             sair();
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            editar();
+        }
+        private void btnEditarObs_Click(object sender, EventArgs e)
+        {
+            if (!editandoObs)
+            {
+                editandoObs = true;
+                txtObs.ReadOnly = false;
+                btnEditarObs.Text = "Salvar";                
+            }
+            else if (editandoObs)
+            {
+                editandoObs = false;
+                txtObs.ReadOnly = true;
+                btnEditarObs.Text = "Editar";
+                bd.atualizarObs(data[0], txtObs.Text);
+            }
+        }
         private void verificaDados()
         {
             if(chkCorte.Checked)
@@ -106,7 +150,7 @@ namespace StudioRL2._0
                 status = "Em aberto";
         }
 
-        private void enable()
+        private void disable()
         {
             chkCorte.Enabled = false;
             chkBarba.Enabled = false;
@@ -127,6 +171,7 @@ namespace StudioRL2._0
             txtApelido.Enabled = false;
             txtNomeCompleto.Enabled = false;
             txtEndereco.Enabled = false;
+            txtObs.ReadOnly = true;
             mskTelCel.Enabled = false;
             mskTelFixo.Enabled = false;
 
@@ -135,7 +180,7 @@ namespace StudioRL2._0
             btnBuscar.Enabled = true;
         }
 
-        private void disable()
+        private void enable()
         {
             chkCorte.Enabled = true;
             chkBarba.Enabled = true;
@@ -156,6 +201,7 @@ namespace StudioRL2._0
             txtApelido.Enabled = true;
             txtNomeCompleto.Enabled = true;
             txtEndereco.Enabled = true;
+            txtObs.ReadOnly = true;
             mskTelCel.Enabled = true;
             mskTelFixo.Enabled = true;
 
@@ -173,7 +219,74 @@ namespace StudioRL2._0
             mskTelCel.Clear();
             mskTelFixo.Clear();
             txtNome.Clear();
-            cboOperadora.Text = "";
+            chkMensalista.Checked = false;
+            chkMensalista.Visible = false;
+            chkInfantil.Checked = false;
+            chkInfantil.Visible = false;
+            chkWhats.Checked = false;
+            chkWhats.Visible = false;
+            btnBuscar.Enabled = true;
+            btnSair.Enabled = false;
+        }
+        
+        private void editar()
+        {
+            if (!editando)
+            {
+                editando = true;
+                btnEditar.Text = "Salvar";
+
+                chkMensalista.Enabled = true;
+                chkMensalista.Visible = true;
+                chkWhats.Enabled = true;
+                chkWhats.Visible = true;
+                chkInfantil.Enabled = true;
+                chkInfantil.Visible = true;
+
+                txtNomeCompleto.ReadOnly = false;
+                txtEndereco.ReadOnly = false;
+                txtApelido.ReadOnly = false;
+                mskTelCel.ReadOnly = false;
+                mskTelFixo.ReadOnly = false;
+                cboOperadora.Enabled = true;
+            }
+            else if(editando)
+            {
+                editando = false;
+                btnEditar.Text = "Editar";
+
+                chkMensalista.Enabled = false;
+                chkInfantil.Enabled = false;
+                chkWhats.Enabled = false;
+                chkInfantil.Visible = true;
+                chkMensalista.Visible = true;
+                chkWhats.Visible = true;
+
+                txtNomeCompleto.ReadOnly = true;
+                txtEndereco.ReadOnly = true;
+                txtApelido.ReadOnly = true;
+                mskTelCel.ReadOnly = true;
+                mskTelFixo.ReadOnly = true;
+                cboOperadora.Enabled = false;
+                
+                if (!chkWhats.Checked)
+                    chkWhats.Visible = false;
+                if(!chkInfantil.Checked)
+                    chkInfantil.Visible = false;
+                if(!chkMensalista.Checked)
+                    chkMensalista.Visible = false;
+                if (chkWhats.Checked)
+                    whats = "S";
+                if (chkInfantil.Checked)
+                    infantil = "S";
+                if (chkMensalista.Checked)
+                    mensalista = "S";
+                DialogResult confirm = MessageBox.Show("Deseja Atualizar o cadastro?", "Validação", MessageBoxButtons.YesNo);
+                if (confirm.ToString().ToUpper() == "YES")
+                {
+                    bd.autalizarCliente(txtNomeCompleto.Text, txtApelido.Text, txtEndereco.Text, mskTelFixo.Text, mskTelCel.Text, cboOperadora.Text, whats, infantil, mensalista, data[0]);
+                }
+            }
         }
         
     }

@@ -161,5 +161,44 @@ namespace StudioRL2._0.Class
                 MessageBox.Show(erro.Message);
             }
         }
+
+        public void autalizarCliente(string nome, string apelido, string endereco, string telFixo, string telCel, string operadora, string whats, string infantil, string mensalista, string ID_Cliente)
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "update clientes set Nome = '" + nome + "', Apelido = '" + apelido + "', Endereco = '" + endereco + "', Tel_Fixo = '" + telFixo + "', Tel_Cel = '" + telCel + "', Operadora = '" + operadora + "', Whatsapp = '" + whats + "', infantil = '" + infantil + "', Mensalista = '" + mensalista + "' where ID_Cliente like '" + ID_Cliente + "'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            
+        }
+
+        public void atualizarObs(string ID_Cliente, string obs)
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "update clientes set Obs = '" + obs + "' where ID_Cliente like '" + ID_Cliente + "'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Observacao atualizada com sucesso");
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            
+        }
     }
 }
