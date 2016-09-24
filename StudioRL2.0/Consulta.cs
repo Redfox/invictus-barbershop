@@ -275,12 +275,11 @@ namespace StudioRL2._0
                     chkInfantil.Visible = false;
                 if(!chkMensalista.Checked)
                     chkMensalista.Visible = false;
-                if (chkWhats.Checked)
-                    whats = "S";
-                if (chkInfantil.Checked)
-                    infantil = "S";
-                if (chkMensalista.Checked)
-                    mensalista = "S";
+
+                if (chkWhats.Checked){whats = "S"; } else { whats = "N"; }
+                if (chkInfantil.Checked){ infantil = "S"; } else { infantil = "N"; }
+                if (chkMensalista.Checked){mensalista = "S";} else { mensalista = "N"; }
+                    
                 DialogResult confirm = MessageBox.Show("Deseja Atualizar o cadastro?", "Validação", MessageBoxButtons.YesNo);
                 if (confirm.ToString().ToUpper() == "YES")
                 {
