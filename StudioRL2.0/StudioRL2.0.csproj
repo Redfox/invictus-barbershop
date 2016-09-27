@@ -67,6 +67,7 @@
     <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\Connection.cs" />
     <Compile Include="Class\DataBase.cs" />
+    <Compile Include="Class\Pagamento.cs" />
     <Compile Include="Consulta.cs">
       <SubType>Form</SubType>
     </Compile>

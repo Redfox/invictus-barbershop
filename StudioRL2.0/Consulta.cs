@@ -35,14 +35,13 @@ namespace StudioRL2._0
         public Consulta()
         {
             InitializeComponent();
+            txtValorPago.Text = "0";
             disable();
         }
-
         private void Consulta_Load(object sender, EventArgs e)
         {
             btnSair.Enabled = false;
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (bd.countCliente(txtNome.Text) > 0)
@@ -55,6 +54,7 @@ namespace StudioRL2._0
                 mskTelFixo.Text = data[4];
                 cboOperadora.Text = data[6];
                 txtObs.Text = data[12];
+                txtValorAberto.Text = data[14];
 
                 if (data[7] == "S")
                 {
@@ -77,10 +77,9 @@ namespace StudioRL2._0
             }
             else
             {
-                MessageBox.Show("sdads");
+                MessageBox.Show("Cliente nao encontrado", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void btnConcluir_Click(object sender, EventArgs e)
         {
             verificaDados();
@@ -88,13 +87,11 @@ namespace StudioRL2._0
                 pagar = true;
             bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
         }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
-            enable();
+            disable();
             sair();
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             editar();
@@ -115,6 +112,31 @@ namespace StudioRL2._0
                 bd.atualizarObs(data[0], txtObs.Text);
             }
         }
+        private void txtValorPago_KeyUp(object sender, KeyEventArgs e)
+        {
+            Pagamento pag = new Pagamento();
+            if(txtValorPago.ReadOnly == false)
+                txtValorRestante.Text = pag.atualizarValorRestante(Convert.ToInt16(txtValorAberto.Text), Convert.ToInt16(txtValorPago.Text)).ToString();
+        }
+        private void btnConcluirPagamento_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt16(txtValorRestante.Text) >= 0)
+            {
+                //do
+            }
+            else
+            {
+                MessageBox.Show("Valor a pagar é maior que o valor em aberto", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar_Click((object)sender, (EventArgs)e);
+            }
+        }
+
         private void verificaDados()
         {
             if(chkCorte.Checked)
@@ -162,17 +184,21 @@ namespace StudioRL2._0
             chkPagar.Enabled = false;
             chkFrequ.Enabled = false;
 
+            metroGrid1.Enabled = false;
+
             txtValor.Enabled = false;
             txtApelido.Enabled = false;
             txtNomeCompleto.Enabled = false;
             txtEndereco.Enabled = false;
             txtObs.ReadOnly = true;
+            txtValorPago.ReadOnly = true;
             mskTelCel.Enabled = false;
             mskTelFixo.Enabled = false;
 
             btnConcluir.Enabled = false;
             btnEditar.Enabled = false;
             btnBuscar.Enabled = true;
+            btnConcluirPagamento.Enabled = false;
         }
 
         private void enable()
@@ -192,11 +218,14 @@ namespace StudioRL2._0
             chkPagar.Enabled = true;
             chkFrequ.Enabled = true;
 
+            metroGrid1.Enabled = true;
+
             txtValor.Enabled = true;
             txtApelido.Enabled = true;
             txtNomeCompleto.Enabled = true;
             txtEndereco.Enabled = true;
             txtObs.ReadOnly = true;
+            txtValorPago.ReadOnly = false;
             mskTelCel.Enabled = true;
             mskTelFixo.Enabled = true;
 
@@ -204,6 +233,7 @@ namespace StudioRL2._0
             btnEditar.Enabled = true;
             btnSair.Enabled = true;
             btnBuscar.Enabled = false;
+            btnConcluirPagamento.Enabled = true;
         }
 
         private void sair()
@@ -214,6 +244,9 @@ namespace StudioRL2._0
             mskTelCel.Clear();
             mskTelFixo.Clear();
             txtNome.Clear();
+            txtValorPago.Text = "0";
+            txtValorAberto.Clear();
+            txtValorRestante.Clear();
             chkMensalista.Checked = false;
             chkMensalista.Visible = false;
             chkInfantil.Checked = false;
@@ -222,6 +255,17 @@ namespace StudioRL2._0
             chkWhats.Visible = false;
             btnBuscar.Enabled = true;
             btnSair.Enabled = false;
+            metroGrid1.Enabled = false;
+
+            if (metroGrid1.DataSource != null)
+            {
+                metroGrid1.DataSource = null;
+            }
+            else
+            {
+                metroGrid1.Rows.Clear();
+
+            }
         }
         
         private void editar()
@@ -293,18 +337,16 @@ namespace StudioRL2._0
                 DataSet ds = new DataSet();
                 conexao.Open();
 
-                cmd = new OdbcCommand("Select ID as 'ID do Corte', DataC as 'Data do corte', Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis, Valor, ValorEmAberto, Status from historico where ID_Cliente like '" + data[0] + "' and Status like 'Em aberto' or Status like 'Em Processo'", conexao);
+                cmd = new OdbcCommand("Select ID as 'ID do Corte', DataC as 'Data do corte',  Valor, ValorEmAberto, Status, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis from historico where ID_Cliente like '" + data[0] + "' and Status like 'Em aberto' or Status like 'Em Processo' order by DataC", conexao);
 
                 adapter = new OdbcDataAdapter(cmd);
                 ds = new DataSet();
                 adapter.Fill(ds, "clientes");
-
-                dataGridPagamento.DataMember = "clientes";
-
-                dataGridPagamento.DataSource = ds;
-                dataGridPagamento.DataMember = "clientes";
-
-                dataGridPagamento.Columns[0].Visible = false;
+                
+                metroGrid1.DataSource = ds;
+                metroGrid1.DataMember = "clientes";
+                
+                metroGrid1.Columns[0].Visible = false;
 
                 conexao.Close();
             }
@@ -313,6 +355,18 @@ namespace StudioRL2._0
                 MessageBox.Show(erro.Message);
             }
 
+        }
+
+        private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                
+            }
         }
     }
 }

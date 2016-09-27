@@ -44,7 +44,7 @@ namespace StudioRL2._0.Class
 
         public string[] buscarCliente(string nome)
         {
-            string[] data = new string[15];
+            string[] data = new string[20];
             try
             {
                 OdbcConnection conexao = new Connection().Conexao();
@@ -107,6 +107,10 @@ namespace StudioRL2._0.Class
                     SQL = "select Frequencia from Clientes where nome = '" + nome + "'";
                     cmd.CommandText = SQL;
                     data[13] = cmd.ExecuteScalar().ToString();
+
+                    SQL = "select ValoraPagar from Clientes where nome = '" + nome + "'";
+                    cmd.CommandText = SQL;
+                    data[14] = cmd.ExecuteScalar().ToString();
                 }
                 
                 conexao.Close();
