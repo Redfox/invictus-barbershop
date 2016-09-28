@@ -118,11 +118,23 @@ namespace StudioRL2._0
             if(txtValorPago.ReadOnly == false)
                 txtValorRestante.Text = pag.atualizarValorRestante(Convert.ToInt16(txtValorAberto.Text), Convert.ToInt16(txtValorPago.Text)).ToString();
         }
+        private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+
+            }
+        }
         private void btnConcluirPagamento_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt16(txtValorRestante.Text) >= 0)
             {
-                //do
+                Pagamento pag = new Pagamento();
+                pag.efetuarPagamento(data[0], txtValorRestante.Text, txtValorPago.Text, rowsCount(), sb(), idCell(), valorCell());
             }
             else
             {
@@ -135,6 +147,50 @@ namespace StudioRL2._0
             {
                 btnBuscar_Click((object)sender, (EventArgs)e);
             }
+        }
+
+        private int valorCell()
+        {
+            int valor = Convert.ToInt32(metroGrid1.Rows[1].Cells[2].Value);
+            return valor;
+        }
+
+        private int idCell()
+        {
+            int valor = Convert.ToInt32(metroGrid1.Rows[1].Cells[0].Value);
+            return valor;
+        }
+
+        private int rowsCount()
+        {
+            Int32 RowsCount = metroGrid1.RowCount;
+            return RowsCount;
+        }
+
+        private string sb()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            if (rowsCount() <= 1)
+            {
+                return Convert.ToString(sb.Append(metroGrid1.SelectedRows[0].Cells[0].Value)); ;
+            }
+            else
+            {
+                for (int i = 0; i < rowsCount(); i++)
+                {
+                    Convert.ToString(sb.Append(", " + metroGrid1.Rows[i].Cells[0].Value));
+                }
+                sb.Remove(0, 2);
+                return sb.ToString();
+            }
+            
+        }
+
+        private string valorpago()
+        {
+            System.Text.StringBuilder valorpago = new System.Text.StringBuilder();
+            return valorpago.Append(metroGrid1.SelectedRows[0].Cells[13].Value).ToString();
         }
 
         private void verificaDados()
@@ -356,17 +412,6 @@ namespace StudioRL2._0
             }
 
         }
-
-        private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((Char.IsLetter(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                
-            }
-        }
+        
     }
 }
