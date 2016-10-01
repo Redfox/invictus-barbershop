@@ -11,6 +11,9 @@ namespace StudioRL2._0
         string[] data;
         DataBase bd = new DataBase();
 
+        public static int rowsCountVar;
+        private static bool doIt = false;
+
         //strings de incersao no banco
         string corte = "N";
         string barba = "N";
@@ -73,6 +76,7 @@ namespace StudioRL2._0
                 }
 
                 preencherGrid();
+                rowsCount();
                 enable();
             }
             else
@@ -86,6 +90,7 @@ namespace StudioRL2._0
             if (chkPagar.Checked)
                 pagar = true;
             bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
+            
         }
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -131,10 +136,16 @@ namespace StudioRL2._0
         }
         private void btnConcluirPagamento_Click(object sender, EventArgs e)
         {
+            setRowsCount();
             if (Convert.ToInt16(txtValorRestante.Text) >= 0)
             {
                 Pagamento pag = new Pagamento();
-                pag.efetuarPagamento(data[0], txtValorRestante.Text, txtValorPago.Text, rowsCount(), sb(), idCell(), valorCell());
+                pag.efetuarPagamento(data[0], txtValorRestante.Text, txtValorPago.Text, rowsCount(), sb(), idCell(), valorCell(0, 3));
+                if (doIt)
+                {
+                    teste();
+                    doItFalse();
+                }
             }
             else
             {
@@ -148,25 +159,22 @@ namespace StudioRL2._0
                 btnBuscar_Click((object)sender, (EventArgs)e);
             }
         }
-
-        private int valorCell()
-        {
-            int valor = Convert.ToInt32(metroGrid1.Rows[1].Cells[2].Value);
-            return valor;
-        }
-
+        
         private int idCell()
         {
-            int valor = Convert.ToInt32(metroGrid1.Rows[1].Cells[0].Value);
+            int valor = Convert.ToInt32(metroGrid1.Rows[0].Cells[0].Value);
             return valor;
         }
-
         private int rowsCount()
         {
             Int32 RowsCount = metroGrid1.RowCount;
             return RowsCount;
         }
-
+        private void setRowsCount()
+        {
+            Int32 RowsCount = metroGrid1.RowCount;
+            rowsCountVar = RowsCount;
+        }
         private string sb()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -186,13 +194,11 @@ namespace StudioRL2._0
             }
             
         }
-
         private string valorpago()
         {
             System.Text.StringBuilder valorpago = new System.Text.StringBuilder();
             return valorpago.Append(metroGrid1.SelectedRows[0].Cells[13].Value).ToString();
         }
-
         private void verificaDados()
         {
             if(chkCorte.Checked)
@@ -222,7 +228,6 @@ namespace StudioRL2._0
             if (chkPagar.Checked)
                 status = "Em aberto";
         }
-
         private void disable()
         {
             chkCorte.Enabled = false;
@@ -256,7 +261,6 @@ namespace StudioRL2._0
             btnBuscar.Enabled = true;
             btnConcluirPagamento.Enabled = false;
         }
-
         private void enable()
         {
             chkCorte.Enabled = true;
@@ -291,7 +295,6 @@ namespace StudioRL2._0
             btnBuscar.Enabled = false;
             btnConcluirPagamento.Enabled = true;
         }
-
         private void sair()
         {
             txtApelido.Clear();
@@ -323,7 +326,6 @@ namespace StudioRL2._0
 
             }
         }
-        
         private void editar()
         {
             if (!editando)
@@ -382,7 +384,6 @@ namespace StudioRL2._0
                 }
             }
         }
-
         private void preencherGrid()
         {
             try
@@ -412,6 +413,73 @@ namespace StudioRL2._0
             }
 
         }
-        
+
+        //public
+        public int valorCell(int row, int cell)
+        {
+            int valor = Convert.ToInt32(metroGrid1.Rows[row].Cells[cell].Value);
+            return valor;
+        }
+        public void teste()
+        {
+            OdbcConnection conexao = new Connection().Conexao();
+            OdbcCommand cmd = new OdbcCommand("", conexao);
+            conexao.Open();
+            for (int i = 0; i < metroGrid1.RowCount; i++)
+            {
+                if (Convert.ToInt16(txtValorPago.Text) > Convert.ToInt32(metroGrid1.Rows[i].Cells[3].Value))
+                {
+                    //se o valor do pagamento ainda e maior do que o valor da linha que esta GG
+                    String SQLHistorico = "update Historico set ValorEmAberto = '0' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLHistorico;
+                    cmd.ExecuteNonQuery();
+
+                    String SQLPago = "update historico set status = 'Pago' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLPago;
+                    cmd.ExecuteNonQuery();
+
+                    String SQLHistorico2 = "update Historico set ValorPago = '" + valorCell(i, 2) + "'  where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLHistorico2;
+                    cmd.ExecuteNonQuery();
+
+                    String SQLPagamento = "update historico set DataP = '" + DateTime.Now.ToString("yyyy'-'MM'-'dd HH:mm:ss") + "' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLPagamento;
+                    cmd.ExecuteNonQuery();
+
+                }
+                else
+                {
+                    //se nao for maior entra aqui GG
+                    int valorR = Convert.ToInt16(valorCell(i, 2)) - Convert.ToInt16(txtValorRestante.Text);
+                    int UltimoValor = Convert.ToInt16(txtValorPago.Text) - valorCell(i, 3);
+                    String SQLHistorico = "update Historico set ValorEmAberto = '" + txtValorRestante.Text + "' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLHistorico;
+                    cmd.ExecuteNonQuery();
+
+                    String SQLHistorico2 = "update Historico set ValorPago = ValorPago + '" + valorR + "' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLHistorico2;
+                    cmd.ExecuteNonQuery();
+
+                    String SQLPago = "update historico set status = 'Em Processo' where ID_Cliente like '" + data[0] + "' and ID like '" + valorCell(i, 0) + "'";
+                    cmd.CommandText = SQLPago;
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Pago com Sucesso!");
+                }
+
+                //valorpagamento -= valorfor;
+
+            }
+
+            conexao.Close();
+        }
+        public void doItTrue()
+        {
+            doIt = true;
+        }
+        public void doItFalse()
+        {
+            doIt = false;
+        }
     }
 }
