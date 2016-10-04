@@ -122,8 +122,6 @@ namespace StudioRL2._0.Class
                         //verificando possibilidades somente com o primeiro valor
                         if (valorPagamento == valorCell.ToString())
                         {
-                            MessageBox.Show("valorPagamento == valorCell.ToString()");
-
                             //so meche no primeiro
                             String SQLHistorico = "update Historico set ValorEmAberto = '0' where ID_Cliente like '" + ID_Cliente + "' and ID like '" + idCell + "'";
                             cmd.CommandText = SQLHistorico;

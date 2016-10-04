@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.PnlHeader = new System.Windows.Forms.Panel();
+            this.lblGerenciar = new System.Windows.Forms.Label();
             this.PnlMinimizar = new System.Windows.Forms.Panel();
             this.lblMinimizar = new System.Windows.Forms.Label();
             this.pnlExit = new System.Windows.Forms.Panel();
@@ -114,6 +115,7 @@
             // PnlHeader
             // 
             this.PnlHeader.BackColor = System.Drawing.Color.Black;
+            this.PnlHeader.Controls.Add(this.lblGerenciar);
             this.PnlHeader.Controls.Add(this.lblCadastro);
             this.PnlHeader.Controls.Add(this.lblConsulta);
             this.PnlHeader.Controls.Add(this.PnlMinimizar);
@@ -128,6 +130,21 @@
             this.PnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlHeaderRight_MouseDown);
             this.PnlHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlHeaderRight_MouseMove);
             this.PnlHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlHeaderRight_MouseUp);
+            // 
+            // lblGerenciar
+            // 
+            this.lblGerenciar.AutoSize = true;
+            this.lblGerenciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGerenciar.ForeColor = System.Drawing.Color.White;
+            this.lblGerenciar.Location = new System.Drawing.Point(387, 0);
+            this.lblGerenciar.Name = "lblGerenciar";
+            this.lblGerenciar.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
+            this.lblGerenciar.Size = new System.Drawing.Size(123, 78);
+            this.lblGerenciar.TabIndex = 4;
+            this.lblGerenciar.Text = "Gerenciar";
+            this.lblGerenciar.Click += new System.EventHandler(this.lblHistorico_Click);
+            this.lblGerenciar.MouseEnter += new System.EventHandler(this.lblHistorico_MouseEnter);
+            this.lblGerenciar.MouseLeave += new System.EventHandler(this.lblHistorico_MouseLeave);
             // 
             // PnlMinimizar
             // 
@@ -233,6 +250,7 @@
         private System.Windows.Forms.Panel PnlContent;
         private System.Windows.Forms.Label lblCadastro;
         private MetroFramework.Components.MetroToolTip metroToolTip1;
+        private System.Windows.Forms.Label lblGerenciar;
     }
 }
 

@@ -44,6 +44,22 @@ namespace StudioRL2._0
         private void Consulta_Load(object sender, EventArgs e)
         {
             btnSair.Enabled = false;
+
+            DataBase db = new DataBase();
+            progressBar1.Maximum = db.autoComplete().Length;
+            txtNome.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtNome.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            for (int i = 0; i < db.autoComplete().Length; i++)
+            {
+                txtNome.AutoCompleteCustomSource.Add(db.autoComplete()[i]);
+                progressBar1.Value = i;
+                if (i == (db.autoComplete().Length - 1))
+                {
+                    progressBar1.Value = progressBar1.Maximum;
+                    progressBar1.Visible = false;
+                }
+
+            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -90,7 +106,8 @@ namespace StudioRL2._0
             if (chkPagar.Checked)
                 pagar = true;
             bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
-            
+            btnBuscar_Click((object)sender, (EventArgs)e);
+            txtValor.Clear();
         }
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -146,6 +163,8 @@ namespace StudioRL2._0
                     teste();
                     doItFalse();
                 }
+                btnBuscar_Click((object)sender, (EventArgs)e);
+                txtValorPago.Text = "0";
             }
             else
             {

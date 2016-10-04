@@ -15,6 +15,7 @@ namespace StudioRL2._0
     {
         private bool conActived = false;
         private bool cadActived = false;
+        private bool histActived = false;
 
         private bool dragging = false;
         private Point dragCursorPoint;
@@ -22,6 +23,7 @@ namespace StudioRL2._0
 
         Consulta consulta = new Consulta();
         Cadastro cadastro = new Cadastro();
+        Gerenciar historico = new Gerenciar();
         public Form1()
         {
             InitializeComponent();
@@ -36,8 +38,10 @@ namespace StudioRL2._0
         private void lblConsulta_Click(object sender, EventArgs e)
         {
             conActived = true;
+            histActived = false;
             cadActived = false;
             lblCadastro.BackColor = Color.Black;
+            lblGerenciar.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             consulta.TopLevel = false;
@@ -180,8 +184,10 @@ namespace StudioRL2._0
         private void lblCadastro_Click(object sender, EventArgs e)
         {
             cadActived = true;
+            histActived = false;
             conActived = false;
             lblConsulta.BackColor = Color.Black;
+            lblGerenciar.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             cadastro.TopLevel = false;
@@ -214,5 +220,35 @@ namespace StudioRL2._0
             PnlContent.Controls.Add(cadastro);
             cadastro.Show();
         }//cadastro ~ END
+        //Historico
+        private void lblHistorico_Click(object sender, EventArgs e)
+        {
+            conActived = false;
+            histActived = true;
+            cadActived = false;
+            lblCadastro.BackColor = Color.Black;
+            lblConsulta.BackColor = Color.Black;
+
+            PnlContent.Controls.Clear();
+            historico.TopLevel = false;
+            historico.MaximizeBox = true;
+            historico.AutoSize = true;
+            historico.Size = PnlContent.Size;
+            PnlContent.Controls.Add(historico);
+            historico.Show();
+        }
+        private void lblHistorico_MouseEnter(object sender, EventArgs e)
+        {
+            lblGerenciar.BackColor = ColorTranslator.FromHtml("#333333");
+            this.Cursor = Cursors.Hand;
+        }
+        private void lblHistorico_MouseLeave(object sender, EventArgs e)
+        {
+            if (!(histActived))
+            {
+                lblGerenciar.BackColor = Color.Black;
+            }
+            this.Cursor = Cursors.Arrow;
+        }//Historico ~ END
     }
 }

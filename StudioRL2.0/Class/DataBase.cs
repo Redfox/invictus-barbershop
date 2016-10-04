@@ -139,7 +139,6 @@ namespace StudioRL2._0.Class
                     SQL = "update clientes set ValoraPagar = ValoraPagar + '" + Valor + "' where ID_Cliente like '" + ID_Cliente + "'";
                     cmd.CommandText = SQL;
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("a pagar");
                 }
                 else if(apagar == false)
                 {
@@ -150,7 +149,6 @@ namespace StudioRL2._0.Class
                     SQL = "update clientes set ValorPago = ValorPago + '" + Valor + "' where ID_Cliente like '" + ID_Cliente + "'";
                     cmd.CommandText = SQL;
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("pago");
                 }
                 
                 
@@ -199,6 +197,52 @@ namespace StudioRL2._0.Class
                 MessageBox.Show(erro.Message);
             }
             
-        }        
+        }
+
+        public void atualizarHistorico(string corte, string barba, string pezinho, string sombrancelha, string sombrancelhaH, string relaxamento, string progressiva, string pigCorte, string pigBarba, string luzes, string gel, string lapis, string id)
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "update historico set `Corte`= '"+ corte +"', `Barba`= '"+ barba + "', `Pezinho`= '"+ pezinho +"', `Sombrancelha`= '"+ sombrancelha +"', `SombrancelhaHenna`= '"+ sombrancelhaH + "', `Relaxamento`= '"+ relaxamento +"', `Progressiva`= '"+ progressiva +"', `PigmentacaoCorte`= '"+ pigCorte + "', `PigmentacaoBarba`= '"+ pigBarba +"', `Luzes`= '"+ luzes +"', `Gel`= '"+ gel +"', `Lapis`= '"+ lapis +"' WHERE  `ID`= '"+ id +"'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Dados do corte atualizado com sucesso");
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+        }
+        public string[] autoComplete()
+        {
+            OdbcConnection conexao = new Connection().Conexao();
+            OdbcCommand cmd1 = new OdbcCommand("", conexao);
+            OdbcCommand cmd2 = new OdbcCommand("", conexao);
+            conexao.Open();
+
+            String SQL1 = "Select count(nome) From Clientes";
+            String SQL2 = "Select (nome) From Clientes";
+            cmd1.CommandText = SQL1;
+            cmd2.CommandText = SQL2;
+            string[] dados = new string[Convert.ToInt32(cmd1.ExecuteScalar())];
+
+            OdbcDataReader rdr = cmd2.ExecuteReader();
+
+            int i = 0;
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    dados[i] = rdr["nome"].ToString();
+                    i++;
+                }
+            }
+            conexao.Close();
+            return dados;
+        }
     }
 }
