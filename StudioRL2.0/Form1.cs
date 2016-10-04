@@ -24,6 +24,7 @@ namespace StudioRL2._0
         Consulta consulta = new Consulta();
         Cadastro cadastro = new Cadastro();
         Gerenciar historico = new Gerenciar();
+        Relatorio relatorio = new Relatorio();
         public Form1()
         {
             InitializeComponent();
@@ -250,5 +251,18 @@ namespace StudioRL2._0
             }
             this.Cursor = Cursors.Arrow;
         }//Historico ~ END
+
+        private void lblRelatorio_Click(object sender, EventArgs e)
+        {
+            lblRelatorio.BackColor = ColorTranslator.FromHtml("#333333");
+
+            PnlContent.Controls.Clear();
+            relatorio.TopLevel = false;
+            relatorio.MaximizeBox = true;
+            relatorio.AutoSize = true;
+            relatorio.Size = PnlContent.Size;
+            PnlContent.Controls.Add(relatorio);
+            relatorio.Show();
+        }
     }
 }

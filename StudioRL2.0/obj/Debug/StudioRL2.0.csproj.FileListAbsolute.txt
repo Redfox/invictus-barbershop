@@ -37,3 +37,4 @@ C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\bi
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2._0.Gerenciar.resources
 C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2._0.EditarHistorico.resources
+C:\Users\Vitor & Giovanni.Valentin-STI\Documents\GitHub\Studio-RL\StudioRL2.0\obj\Debug\StudioRL2._0.Relatorio.resources
