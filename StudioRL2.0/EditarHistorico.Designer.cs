@@ -100,6 +100,8 @@
             this.lblSair.TabIndex = 5;
             this.lblSair.Text = "Sair";
             this.lblSair.Click += new System.EventHandler(this.label2_Click);
+            this.lblSair.MouseEnter += new System.EventHandler(this.lblSair_MouseEnter);
+            this.lblSair.MouseLeave += new System.EventHandler(this.lblSair_MouseLeave);
             // 
             // chkCorte
             // 
@@ -275,6 +277,8 @@
             this.lblConcluir.TabIndex = 31;
             this.lblConcluir.Text = "Concluir";
             this.lblConcluir.Click += new System.EventHandler(this.lblConcluir_Click);
+            this.lblConcluir.MouseEnter += new System.EventHandler(this.lblConcluir_MouseEnter);
+            this.lblConcluir.MouseLeave += new System.EventHandler(this.lblConcluir_MouseLeave);
             // 
             // EditarHistorico
             // 

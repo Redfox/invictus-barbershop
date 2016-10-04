@@ -284,5 +284,25 @@ namespace StudioRL2._0.Class
                 MessageBox.Show(erro.Message);
             }
         }
+
+        public void deleteCliente(string id)
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                
+                string SQl = "DELETE FROM clientes WHERE ID_Cliente = '" + id + "'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cliente apagado com sucesso");
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+        }
     }
 }

@@ -47,7 +47,14 @@ namespace StudioRL2._0
                 DataSet ds = new DataSet();
                 conexao.Open();
 
-                cmd = new OdbcCommand("Select ID as 'ID do Corte', ID_Cliente, DataC as 'Data do corte',  Valor, ValorEmAberto, Status, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis from historico order by DataC", conexao);
+                if (Historico)
+                {
+                    cmd = new OdbcCommand("Select ID as 'ID do Corte', ID_Cliente, DataC as 'Data do corte',  Valor, ValorEmAberto, Status, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis from historico order by DataC", conexao);
+                }
+                else if(clientes)
+                {
+                    cmd = new OdbcCommand("Select ID_Cliente as 'ID do Cliente', Nome, Apelido, Endereco, Tel_Fixo as 'Telefone Fixo', Tel_Cel as 'Celular', Operadora, Whatsapp, Sexo, Mensalista, Infantil, ValorPago as 'Valor Pago', ValoraPagar as 'Valor em Aberto' from clientes ORDER BY Nome ASC", conexao);
+                }
 
                 adapter = new OdbcDataAdapter(cmd);
                 ds = new DataSet();
@@ -56,8 +63,17 @@ namespace StudioRL2._0
                 metroGrid1.DataSource = ds;
                 metroGrid1.DataMember = "clientes";
 
+
                 metroGrid1.Columns[0].Visible = false;
-                metroGrid1.Columns[1].Visible = false;
+                if (Historico)
+                {
+                    metroGrid1.Columns[1].Visible = false;
+                }
+                else
+                {
+                    metroGrid1.Columns[1].Visible = true;
+                }
+                
 
                 conexao.Close();
             }
@@ -69,6 +85,7 @@ namespace StudioRL2._0
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            metroGrid1.Focus();
             string corte = metroGrid1.CurrentRow.Cells[6].Value.ToString();
             string barba = metroGrid1.CurrentRow.Cells[7].Value.ToString();
             string gel = metroGrid1.CurrentRow.Cells[16].Value.ToString();
@@ -97,28 +114,38 @@ namespace StudioRL2._0
             Historico = true;
             clientes = false;
             lblCliente.BackColor = Color.Black;
+            btnEditar.Enabled = true;
+            preencherGrid();
         }
         private void label1_Click(object sender, EventArgs e)
         {
             clientes = true;
             Historico = false;
             lblHistorico.BackColor = Color.Black;
-
+            btnEditar.Enabled = false;
+            preencherGrid();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            DataBase bd = new DataBase();
-            if (Historico)
+            DialogResult dialogResult = MessageBox.Show("Deseja apagar dados selecionados?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
             {
-                bd.deleteHistorico(metroGrid1.CurrentRow.Cells[0].Value.ToString());
-                preencherGrid();
-            }
+                DataBase bd = new DataBase();
+                if (Historico)
+                {
+                    bd.deleteHistorico(metroGrid1.CurrentRow.Cells[0].Value.ToString());
+                    preencherGrid();
+                }
 
-            if (clientes)
-            {
-
+                if (clientes)
+                {
+                    bd.deleteCliente(metroGrid1.CurrentRow.Cells[0].Value.ToString());
+                    preencherGrid();
+                }
             }
+            else if (dialogResult == DialogResult.No){ }
+            
         }
 
         private void lblHistorico_MouseLeave(object sender, EventArgs e)
@@ -131,16 +158,19 @@ namespace StudioRL2._0
             {
                 lblHistorico.BackColor = Color.Black;
             }
+            this.Cursor = Cursors.Arrow;
         }
 
         private void lblHistorico_MouseEnter(object sender, EventArgs e)
         {
             lblHistorico.BackColor = ColorTranslator.FromHtml("#333333");
+            this.Cursor = Cursors.Hand;
         }
 
         private void lblCliente_MouseEnter(object sender, EventArgs e)
         {
             lblCliente.BackColor = ColorTranslator.FromHtml("#333333");
+            this.Cursor = Cursors.Hand;
         }
 
         private void lblCliente_MouseLeave(object sender, EventArgs e)
@@ -153,6 +183,7 @@ namespace StudioRL2._0
             {
                 lblCliente.BackColor = Color.Black;
             }
+            this.Cursor = Cursors.Arrow;
         }
     }
 }
