@@ -244,5 +244,45 @@ namespace StudioRL2._0.Class
             conexao.Close();
             return dados;
         }
+
+        public void deleteHistorico(string id)
+        {
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+
+                string SQl;
+                SQl = "select ValorEmAberto from historico WHERE id = '" + id + "'";
+                cmd.CommandText = SQl;
+                string valor = cmd.ExecuteScalar().ToString();
+
+                SQl = "select ID_Cliente from historico WHERE id = '" + id + "'";
+                cmd.CommandText = SQl;
+                string idCliente = cmd.ExecuteScalar().ToString();
+
+                SQl = "select status from historico WHERE id = '" + id + "'";
+                cmd.CommandText = SQl;
+                string pago = cmd.ExecuteScalar().ToString();
+
+                if(pago != "Pago")
+                {
+                    SQl = "update clientes set valorapagar =  valorapagar - " + valor + "  WHERE ID_Cliente = '" + idCliente + "'";
+                    cmd.CommandText = SQl;
+                    cmd.ExecuteNonQuery();
+                }
+                
+                SQl = "DELETE FROM historico WHERE id = '"+ id +"'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Dados apagado com sucesso");
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+        }
     }
 }

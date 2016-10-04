@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Data;
 using System.Data.Odbc;
 using System.Windows.Forms;
@@ -8,6 +9,9 @@ namespace StudioRL2._0
 {
     public partial class Gerenciar : Form
     {
+        private bool Historico = true;
+        private bool clientes = false;
+
         public Gerenciar()
         {
             InitializeComponent();
@@ -31,8 +35,8 @@ namespace StudioRL2._0
                     
             }*/
             preencherGrid();
+            lblHistorico.BackColor = ColorTranslator.FromHtml("#333333");
         }
-
         private void preencherGrid()
         {
             try
@@ -51,7 +55,9 @@ namespace StudioRL2._0
 
                 metroGrid1.DataSource = ds;
                 metroGrid1.DataMember = "clientes";
-                
+
+                metroGrid1.Columns[0].Visible = false;
+                metroGrid1.Columns[1].Visible = false;
 
                 conexao.Close();
             }
@@ -61,7 +67,6 @@ namespace StudioRL2._0
             }
 
         }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             string corte = metroGrid1.CurrentRow.Cells[6].Value.ToString();
@@ -83,10 +88,71 @@ namespace StudioRL2._0
             EditarHistorico edit = new EditarHistorico(corte, barba, gel, lapis, luzes, pezinho, pigbarba, pigCorte, progressiva, relaxamento, sombrancelha, sombancelhaHenna, status, valor, id);
             edit.ShowDialog();
         }
-
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             preencherGrid();
+        }
+        private void lblHistorico_Click(object sender, EventArgs e)
+        {
+            Historico = true;
+            clientes = false;
+            lblCliente.BackColor = Color.Black;
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+            clientes = true;
+            Historico = false;
+            lblHistorico.BackColor = Color.Black;
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DataBase bd = new DataBase();
+            if (Historico)
+            {
+                bd.deleteHistorico(metroGrid1.CurrentRow.Cells[0].Value.ToString());
+                preencherGrid();
+            }
+
+            if (clientes)
+            {
+
+            }
+        }
+
+        private void lblHistorico_MouseLeave(object sender, EventArgs e)
+        {
+            if (Historico)
+            {
+                lblHistorico.BackColor = ColorTranslator.FromHtml("#333333");
+            }
+            else
+            {
+                lblHistorico.BackColor = Color.Black;
+            }
+        }
+
+        private void lblHistorico_MouseEnter(object sender, EventArgs e)
+        {
+            lblHistorico.BackColor = ColorTranslator.FromHtml("#333333");
+        }
+
+        private void lblCliente_MouseEnter(object sender, EventArgs e)
+        {
+            lblCliente.BackColor = ColorTranslator.FromHtml("#333333");
+        }
+
+        private void lblCliente_MouseLeave(object sender, EventArgs e)
+        {
+            if (clientes)
+            {
+                lblCliente.BackColor = ColorTranslator.FromHtml("#333333");
+            }
+            else
+            {
+                lblCliente.BackColor = Color.Black;
+            }
         }
     }
 }
