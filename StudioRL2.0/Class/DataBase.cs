@@ -209,13 +209,68 @@ namespace StudioRL2._0.Class
                 String SQl = "update historico set `Corte`= '"+ corte +"', `Barba`= '"+ barba + "', `Pezinho`= '"+ pezinho +"', `Sombrancelha`= '"+ sombrancelha +"', `SombrancelhaHenna`= '"+ sombrancelhaH + "', `Relaxamento`= '"+ relaxamento +"', `Progressiva`= '"+ progressiva +"', `PigmentacaoCorte`= '"+ pigCorte + "', `PigmentacaoBarba`= '"+ pigBarba +"', `Luzes`= '"+ luzes +"', `Gel`= '"+ gel +"', `Lapis`= '"+ lapis +"' WHERE  `ID`= '"+ id +"'";
                 cmd.CommandText = SQl;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Dados do corte atualizado com sucesso");
                 conexao.Close();
             }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message);
             }
+        }
+
+        public void atualizarValorHistorico(string valor, string idCliente, string idHistorico)
+        {/*
+            try
+            {*/
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+
+                String SQl = "select ValorEmAberto from historico WHERE  `ID`= '" + idHistorico + "'";
+                cmd.CommandText = SQl;
+                int ValorEmAberto = Convert.ToInt16(cmd.ExecuteScalar().ToString());
+
+                SQl = "select valor from historico WHERE  `ID`= '" + idHistorico + "'";
+                cmd.CommandText = SQl;
+                int valorHistorico = Convert.ToInt16(cmd.ExecuteScalar().ToString());
+                        
+                if (Convert.ToInt16(valor) < ValorEmAberto)
+                {
+                    SQl = "update historico set ValorEmAberto = '" + valor + "' WHERE  `ID`= '" + idHistorico + "'";
+                    cmd.CommandText = SQl;
+                    cmd.ExecuteNonQuery();
+                }
+
+                if(ValorEmAberto == valorHistorico)
+                {
+                    SQl = "update historico set ValorEmAberto = '" + valor + "' WHERE  `ID`= '" + idHistorico + "'";
+                    cmd.CommandText = SQl;
+                    cmd.ExecuteNonQuery();
+                }
+                
+                if(valorHistorico < Convert.ToInt16(valor))
+                {
+                    int valorDiferenca =  Convert.ToInt16(valor) - valorHistorico;
+                    SQl = "update clientes set valoraPagar = valoraPagar + '" + valorDiferenca + "' WHERE  `ID_Cliente`= '" + idCliente + "'";
+                    cmd.CommandText = SQl;
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    int valorDiferenca = valorHistorico - Convert.ToInt16(valor);
+                    SQl = "update clientes set valoraPagar = valoraPagar - '" + valorDiferenca + "' WHERE  `ID_Cliente`= '" + idCliente + "'";
+                    cmd.CommandText = SQl;
+                    cmd.ExecuteNonQuery();
+                }
+
+                SQl = "update historico set valor = '" + valor + "' WHERE  `ID`= '" + idHistorico + "'";
+                cmd.CommandText = SQl;
+                cmd.ExecuteNonQuery();
+                conexao.Close();
+            /*}
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }*/
         }
         public string[] autoComplete()
         {

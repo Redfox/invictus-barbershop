@@ -19,12 +19,15 @@ namespace StudioRL2._0
         string sombrancelha = "N";
         string sombrancelhaHenna = "N";
         string status;
-        string id;
+        string idHistorico;
+        string idCliente;
+        int valorInicial;
 
-        public EditarHistorico(string Corte, string Barba, string Gel, string Lapis, string Luzes, string Pezinho, string Pigbarba, string Pigcorte, string Progressiva, string Relaxamento, string Sombrancelha, string SombrancelhaH, string Status, string valor, string Id)
+        public EditarHistorico(string Corte, string Barba, string Gel, string Lapis, string Luzes, string Pezinho, string Pigbarba, string Pigcorte, string Progressiva, string Relaxamento, string Sombrancelha, string SombrancelhaH, string Status, string valor, string IDHistorico, string IDCliente)
         {
             InitializeComponent();
-            corte = Corte; barba = Barba; gel = Gel; lapis = Lapis; luzes = Luzes; pezinho = Pezinho; pigbarba = Pigbarba; pigCorte = Pigcorte; progressiva = Progressiva; relaxamento = Relaxamento; sombrancelha = Sombrancelha; sombrancelhaHenna = SombrancelhaH; status = Status; id = Id;
+            corte = Corte; barba = Barba; gel = Gel; lapis = Lapis; luzes = Luzes; pezinho = Pezinho; pigbarba = Pigbarba; pigCorte = Pigcorte; progressiva = Progressiva; relaxamento = Relaxamento; sombrancelha = Sombrancelha; sombrancelhaHenna = SombrancelhaH; status = Status; idHistorico = IDHistorico; idCliente = IDCliente;
+            valorInicial = Convert.ToInt16(valor);
             txtValor.Text = valor;
             if (status == "Pago")
                 chkPago.Checked = true;
@@ -44,8 +47,18 @@ namespace StudioRL2._0
         {
             DataBase bd = new DataBase();
             verificaDados();
-            bd.atualizarHistorico(corte, barba, pezinho, sombrancelha, sombrancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, id);
-            this.Dispose();
+            DialogResult dialogResult = MessageBox.Show("Deseja apagar dados selecionados?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                bd.atualizarHistorico(corte, barba, pezinho, sombrancelha, sombrancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, idHistorico);
+                if(valorInicial != Convert.ToInt16(txtValor.Text))
+                {
+                    bd.atualizarValorHistorico(txtValor.Text, idCliente, idHistorico);
+                }
+                MessageBox.Show("Dados do corte atualizado com sucesso");
+                this.Dispose();
+            }
+                
         }
 
         private void verificaVars()

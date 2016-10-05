@@ -16,6 +16,7 @@ namespace StudioRL2._0
         private bool conActived = false;
         private bool cadActived = false;
         private bool histActived = false;
+        private bool relActived = false;
 
         private bool dragging = false;
         private Point dragCursorPoint;
@@ -41,8 +42,10 @@ namespace StudioRL2._0
             conActived = true;
             histActived = false;
             cadActived = false;
+            relActived = false;
             lblCadastro.BackColor = Color.Black;
             lblGerenciar.BackColor = Color.Black;
+            lblRelatorio.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             consulta.TopLevel = false;
@@ -52,12 +55,10 @@ namespace StudioRL2._0
             PnlContent.Controls.Add(consulta);
             consulta.Show();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             PnlContent.Controls.Clear();
-        }
-        
+        }        
         //Movimentar o form Principal
         private void PnlHeaderLeft_MouseDown(object sender, MouseEventArgs e)
         {
@@ -187,8 +188,10 @@ namespace StudioRL2._0
             cadActived = true;
             histActived = false;
             conActived = false;
+            relActived = false;
             lblConsulta.BackColor = Color.Black;
             lblGerenciar.BackColor = Color.Black;
+            lblRelatorio.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             cadastro.TopLevel = false;
@@ -227,8 +230,10 @@ namespace StudioRL2._0
             conActived = false;
             histActived = true;
             cadActived = false;
+            relActived = false;
             lblCadastro.BackColor = Color.Black;
             lblConsulta.BackColor = Color.Black;
+            lblRelatorio.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             historico.TopLevel = false;
@@ -254,7 +259,13 @@ namespace StudioRL2._0
 
         private void lblRelatorio_Click(object sender, EventArgs e)
         {
-            lblRelatorio.BackColor = ColorTranslator.FromHtml("#333333");
+            cadActived = false;
+            histActived = false;
+            conActived = false;
+            relActived = true;
+            lblCadastro.BackColor = Color.Black;
+            lblConsulta.BackColor = Color.Black;
+            lblGerenciar.BackColor = Color.Black;
 
             PnlContent.Controls.Clear();
             relatorio.TopLevel = false;
@@ -263,6 +274,21 @@ namespace StudioRL2._0
             relatorio.Size = PnlContent.Size;
             PnlContent.Controls.Add(relatorio);
             relatorio.Show();
+        }
+
+        private void lblRelatorio_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelatorio.BackColor = ColorTranslator.FromHtml("#333333");
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void lblRelatorio_MouseLeave(object sender, EventArgs e)
+        {
+            if (!(relActived))
+            {
+                lblRelatorio.BackColor = Color.Black;
+            }
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

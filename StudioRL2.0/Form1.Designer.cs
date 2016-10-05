@@ -35,6 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.PnlHeader = new System.Windows.Forms.Panel();
+            this.lblRelatorio = new System.Windows.Forms.Label();
             this.lblGerenciar = new System.Windows.Forms.Label();
             this.PnlMinimizar = new System.Windows.Forms.Panel();
             this.lblMinimizar = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.lblFechar = new System.Windows.Forms.Label();
             this.PnlContent = new System.Windows.Forms.Panel();
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
-            this.lblRelatorio = new System.Windows.Forms.Label();
             this.PnlTitle.SuspendLayout();
             this.PnlHeader.SuspendLayout();
             this.PnlMinimizar.SuspendLayout();
@@ -133,6 +133,21 @@
             this.PnlHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlHeaderRight_MouseMove);
             this.PnlHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlHeaderRight_MouseUp);
             // 
+            // lblRelatorio
+            // 
+            this.lblRelatorio.AutoSize = true;
+            this.lblRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelatorio.ForeColor = System.Drawing.Color.White;
+            this.lblRelatorio.Location = new System.Drawing.Point(509, 0);
+            this.lblRelatorio.Name = "lblRelatorio";
+            this.lblRelatorio.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
+            this.lblRelatorio.Size = new System.Drawing.Size(114, 78);
+            this.lblRelatorio.TabIndex = 5;
+            this.lblRelatorio.Text = "Relatorio";
+            this.lblRelatorio.Click += new System.EventHandler(this.lblRelatorio_Click);
+            this.lblRelatorio.MouseEnter += new System.EventHandler(this.lblRelatorio_MouseEnter);
+            this.lblRelatorio.MouseLeave += new System.EventHandler(this.lblRelatorio_MouseLeave);
+            // 
             // lblGerenciar
             // 
             this.lblGerenciar.AutoSize = true;
@@ -214,19 +229,6 @@
             this.metroToolTip1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroToolTip1.StyleManager = null;
             this.metroToolTip1.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // lblRelatorio
-            // 
-            this.lblRelatorio.AutoSize = true;
-            this.lblRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelatorio.ForeColor = System.Drawing.Color.White;
-            this.lblRelatorio.Location = new System.Drawing.Point(513, 1);
-            this.lblRelatorio.Name = "lblRelatorio";
-            this.lblRelatorio.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
-            this.lblRelatorio.Size = new System.Drawing.Size(114, 78);
-            this.lblRelatorio.TabIndex = 5;
-            this.lblRelatorio.Text = "Relatorio";
-            this.lblRelatorio.Click += new System.EventHandler(this.lblRelatorio_Click);
             // 
             // Form1
             // 

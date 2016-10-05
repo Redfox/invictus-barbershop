@@ -100,9 +100,10 @@ namespace StudioRL2._0
             string sombancelhaHenna = metroGrid1.CurrentRow.Cells[10].Value.ToString();
             string status = metroGrid1.CurrentRow.Cells[5].Value.ToString();
             string valor = metroGrid1.CurrentRow.Cells[3].Value.ToString();
-            string id = metroGrid1.CurrentRow.Cells[0].Value.ToString();
+            string idHistorico = metroGrid1.CurrentRow.Cells[0].Value.ToString();
+            string idCliente = metroGrid1.CurrentRow.Cells[1].Value.ToString();
 
-            EditarHistorico edit = new EditarHistorico(corte, barba, gel, lapis, luzes, pezinho, pigbarba, pigCorte, progressiva, relaxamento, sombrancelha, sombancelhaHenna, status, valor, id);
+            EditarHistorico edit = new EditarHistorico(corte, barba, gel, lapis, luzes, pezinho, pigbarba, pigCorte, progressiva, relaxamento, sombrancelha, sombancelhaHenna, status, valor, idHistorico, idCliente);
             edit.ShowDialog();
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
