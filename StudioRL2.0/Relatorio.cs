@@ -18,14 +18,13 @@ namespace StudioRL2._0
         public Relatorio()
         {
             InitializeComponent();
-            cboRange.SelectedIndex = 0;
-            setMaxProgressBar();
-            setValurProgressBar();
+            
+            lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() +",00";
         }
 
         private void Relatorio_Load(object sender, EventArgs e)
         {
-            
+        
         }
         private void setMaxProgressBar()
         {
@@ -43,7 +42,7 @@ namespace StudioRL2._0
 
             lblQuantidade.Text = bd.returnCountHisotrico(cboRange.Text).ToString();
         }
-        private void setValurProgressBar()
+        private void setValueProgressBar()
         {
             progressBarba.Value = bd.returnBarba(cboRange.Text);
             progressCorte.Value = bd.returnCorte(cboRange.Text);
@@ -71,13 +70,15 @@ namespace StudioRL2._0
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(cboRange.Text);
+            //MessageBox.Show(progressRelaxamento.Text + "\n" + progressRelaxamento.Value);
+            
         }
         private void cboRange_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetProgressBar();
             setMaxProgressBar();
-            setValurProgressBar();
+            setValueProgressBar();
+            lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() + ",00";
         }
         private void resetProgressBar()
         {
@@ -93,5 +94,6 @@ namespace StudioRL2._0
             progressLuzes.Value = 0;
             progressRelaxamento.Value = 0;
         }
+        
     }
 }

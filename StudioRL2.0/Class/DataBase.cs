@@ -7,6 +7,15 @@ namespace StudioRL2._0.Class
 {
     class DataBase
     {
+        string ontem;
+
+        private void setData()
+        {
+            string diaHoje = DateTime.Now.ToString("dd");
+            int diaOntem = Convert.ToInt16(diaHoje) - 1;
+            ontem = DateTime.Now.ToString("yyyy-MM-"+ diaOntem);
+        }
+
         public void cadastrarCliente(string nome, string apelido, string endereco, string telFixo, string telCel, string operadora, string whatsapp, string sexo, string infantil, string mensalista)
         {
             try
@@ -374,6 +383,12 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(*) from historico";
@@ -392,6 +407,7 @@ namespace StudioRL2._0.Class
 
         public int returnCorte(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -404,14 +420,19 @@ namespace StudioRL2._0.Class
                     String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
-
-                }else if (range == "todo")
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
                 {
                     String SQl = "select count(corte) from historico where corte like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
-                
                 conexao.Close();
             }
             catch (Exception erro)
@@ -422,6 +443,7 @@ namespace StudioRL2._0.Class
         }
         public int returnBarba(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -431,6 +453,12 @@ namespace StudioRL2._0.Class
                 if (range == "Hoje")
                 {
                     String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -450,6 +478,7 @@ namespace StudioRL2._0.Class
         }
         public int returnPezinho(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -459,6 +488,12 @@ namespace StudioRL2._0.Class
                 if (range == "Hoje")
                 {
                     String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -479,6 +514,7 @@ namespace StudioRL2._0.Class
         }
         public int returnSombrancelha(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -488,6 +524,12 @@ namespace StudioRL2._0.Class
                 if (range == "Hoje")
                 {
                     String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'  and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -508,6 +550,7 @@ namespace StudioRL2._0.Class
         }
         public int returnSombrancelhaHenna(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -517,6 +560,12 @@ namespace StudioRL2._0.Class
                 if (range == "Hoje")
                 {
                     String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -536,6 +585,7 @@ namespace StudioRL2._0.Class
         }
         public int returnRelaxamento(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -548,13 +598,18 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
-                else if (range == "todo")
+                else if (range == "Ontem")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
-
+                else if (range == "todo")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -565,6 +620,7 @@ namespace StudioRL2._0.Class
         }
         public int returnprogressiva(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -577,9 +633,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S'and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -593,6 +655,7 @@ namespace StudioRL2._0.Class
         }
         public int returnPigCorte(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -605,9 +668,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -621,6 +690,7 @@ namespace StudioRL2._0.Class
         }
         public int returnPigBarba(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -633,9 +703,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -649,6 +725,7 @@ namespace StudioRL2._0.Class
         }
         public int returnLuzes(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -661,9 +738,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -677,6 +760,7 @@ namespace StudioRL2._0.Class
         }
         public int returnGel(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -689,9 +773,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(Gel) from historico where Gel like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -705,6 +795,7 @@ namespace StudioRL2._0.Class
         }
         public int returnLapis(string range)
         {
+            setData();
             int count = 0;
             try
             {
@@ -717,9 +808,15 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
-                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -731,5 +828,41 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
+        public int returnValorTotal(string range)
+        {
+            setData();
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                if (range == "Hoje")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select count(valor) from historico where valor like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select sum(valor) from historico";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        
     }
 }

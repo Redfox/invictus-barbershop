@@ -47,13 +47,15 @@
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.lblQuantidade = new System.Windows.Forms.Label();
+            this.lblValor = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.progressRelaxamento = new CircularProgressBar.CircularProgressBar();
             this.progressSombrancelhaHenna = new CircularProgressBar.CircularProgressBar();
             this.progressLapis = new CircularProgressBar.CircularProgressBar();
             this.progressGel = new CircularProgressBar.CircularProgressBar();
             this.progressPigBarba = new CircularProgressBar.CircularProgressBar();
             this.progressPigCorte = new CircularProgressBar.CircularProgressBar();
             this.progressLuzes = new CircularProgressBar.CircularProgressBar();
-            this.progressRelaxamento = new CircularProgressBar.CircularProgressBar();
             this.progressSombrancelha = new CircularProgressBar.CircularProgressBar();
             this.progressPezinho = new CircularProgressBar.CircularProgressBar();
             this.progressBarba = new CircularProgressBar.CircularProgressBar();
@@ -234,6 +236,8 @@
             this.cboRange.ItemHeight = 23;
             this.cboRange.Items.AddRange(new object[] {
             "Hoje",
+            "Ontem",
+            "Mes Anterior",
             "todo"});
             this.cboRange.Location = new System.Drawing.Point(280, 37);
             this.cboRange.Name = "cboRange";
@@ -276,6 +280,59 @@
             this.lblQuantidade.TabIndex = 32;
             this.lblQuantidade.Text = "1";
             // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValor.ForeColor = System.Drawing.Color.Black;
+            this.lblValor.Location = new System.Drawing.Point(198, 472);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Size = new System.Drawing.Size(18, 20);
+            this.lblValor.TabIndex = 34;
+            this.lblValor.Text = "1";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(38, 470);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(163, 20);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "Valor total dos cortes:";
+            // 
+            // progressRelaxamento
+            // 
+            this.progressRelaxamento.AnimationSpeed = 500;
+            this.progressRelaxamento.BackColor = System.Drawing.Color.White;
+            this.progressRelaxamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressRelaxamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.progressRelaxamento.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.progressRelaxamento.InnerMargin = 0;
+            this.progressRelaxamento.InnerWidth = -1;
+            this.progressRelaxamento.Location = new System.Drawing.Point(42, 334);
+            this.progressRelaxamento.MarqueeAnimationSpeed = 2000;
+            this.progressRelaxamento.Name = "progressRelaxamento";
+            this.progressRelaxamento.OuterColor = System.Drawing.Color.Gray;
+            this.progressRelaxamento.OuterMargin = -15;
+            this.progressRelaxamento.OuterWidth = 15;
+            this.progressRelaxamento.ProgressColor = System.Drawing.Color.Red;
+            this.progressRelaxamento.ProgressWidth = 15;
+            this.progressRelaxamento.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 72F);
+            this.progressRelaxamento.Size = new System.Drawing.Size(120, 115);
+            this.progressRelaxamento.StartAngle = 270;
+            this.progressRelaxamento.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.progressRelaxamento.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.progressRelaxamento.SubscriptText = "";
+            this.progressRelaxamento.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.progressRelaxamento.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
+            this.progressRelaxamento.SuperscriptText = " ";
+            this.progressRelaxamento.TabIndex = 35;
+            this.progressRelaxamento.Text = "0";
+            this.progressRelaxamento.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.progressRelaxamento.Value = 1;
+            // 
             // progressSombrancelhaHenna
             // 
             this.progressSombrancelhaHenna.AnimationSpeed = 500;
@@ -303,7 +360,7 @@
             this.progressSombrancelhaHenna.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressSombrancelhaHenna.SuperscriptText = " ";
             this.progressSombrancelhaHenna.TabIndex = 27;
-            this.progressSombrancelhaHenna.Text = "10%";
+            this.progressSombrancelhaHenna.Text = "0";
             this.progressSombrancelhaHenna.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressSombrancelhaHenna.Value = 1;
             // 
@@ -334,7 +391,7 @@
             this.progressLapis.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.progressLapis.SuperscriptText = " ";
             this.progressLapis.TabIndex = 26;
-            this.progressLapis.Text = "10%";
+            this.progressLapis.Text = "0";
             this.progressLapis.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressLapis.Value = 1;
             // 
@@ -365,7 +422,7 @@
             this.progressGel.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressGel.SuperscriptText = " ";
             this.progressGel.TabIndex = 24;
-            this.progressGel.Text = "3";
+            this.progressGel.Text = "0";
             this.progressGel.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressGel.Value = 1;
             // 
@@ -396,7 +453,7 @@
             this.progressPigBarba.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressPigBarba.SuperscriptText = " ";
             this.progressPigBarba.TabIndex = 14;
-            this.progressPigBarba.Text = "10%";
+            this.progressPigBarba.Text = "0";
             this.progressPigBarba.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressPigBarba.Value = 1;
             // 
@@ -427,7 +484,7 @@
             this.progressPigCorte.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressPigCorte.SuperscriptText = " ";
             this.progressPigCorte.TabIndex = 12;
-            this.progressPigCorte.Text = "10%";
+            this.progressPigCorte.Text = "0";
             this.progressPigCorte.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressPigCorte.Value = 1;
             // 
@@ -458,40 +515,9 @@
             this.progressLuzes.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressLuzes.SuperscriptText = " ";
             this.progressLuzes.TabIndex = 16;
-            this.progressLuzes.Text = "3";
+            this.progressLuzes.Text = "0";
             this.progressLuzes.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressLuzes.Value = 1;
-            // 
-            // progressRelaxamento
-            // 
-            this.progressRelaxamento.AnimationSpeed = 500;
-            this.progressRelaxamento.BackColor = System.Drawing.Color.White;
-            this.progressRelaxamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressRelaxamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.progressRelaxamento.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.progressRelaxamento.InnerMargin = 0;
-            this.progressRelaxamento.InnerWidth = -1;
-            this.progressRelaxamento.Location = new System.Drawing.Point(42, 334);
-            this.progressRelaxamento.MarqueeAnimationSpeed = 2000;
-            this.progressRelaxamento.Name = "progressRelaxamento";
-            this.progressRelaxamento.OuterColor = System.Drawing.Color.Gray;
-            this.progressRelaxamento.OuterMargin = -15;
-            this.progressRelaxamento.OuterWidth = 15;
-            this.progressRelaxamento.ProgressColor = System.Drawing.Color.Red;
-            this.progressRelaxamento.ProgressWidth = 15;
-            this.progressRelaxamento.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 72F);
-            this.progressRelaxamento.Size = new System.Drawing.Size(120, 115);
-            this.progressRelaxamento.StartAngle = 270;
-            this.progressRelaxamento.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.progressRelaxamento.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.progressRelaxamento.SubscriptText = "";
-            this.progressRelaxamento.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.progressRelaxamento.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
-            this.progressRelaxamento.SuperscriptText = " ";
-            this.progressRelaxamento.TabIndex = 10;
-            this.progressRelaxamento.Text = "10%";
-            this.progressRelaxamento.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.progressRelaxamento.Value = 1;
             // 
             // progressSombrancelha
             // 
@@ -520,7 +546,7 @@
             this.progressSombrancelha.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressSombrancelha.SuperscriptText = " ";
             this.progressSombrancelha.TabIndex = 8;
-            this.progressSombrancelha.Text = "10%";
+            this.progressSombrancelha.Text = "0";
             this.progressSombrancelha.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressSombrancelha.Value = 1;
             // 
@@ -551,7 +577,7 @@
             this.progressPezinho.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressPezinho.SuperscriptText = " ";
             this.progressPezinho.TabIndex = 6;
-            this.progressPezinho.Text = "10%";
+            this.progressPezinho.Text = "0";
             this.progressPezinho.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressPezinho.Value = 1;
             // 
@@ -582,7 +608,7 @@
             this.progressBarba.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressBarba.SuperscriptText = " ";
             this.progressBarba.TabIndex = 1;
-            this.progressBarba.Text = "10%";
+            this.progressBarba.Text = "0";
             this.progressBarba.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressBarba.Value = 1;
             // 
@@ -613,7 +639,7 @@
             this.progressCorte.SuperscriptMargin = new System.Windows.Forms.Padding(2, 35, 0, 0);
             this.progressCorte.SuperscriptText = " ";
             this.progressCorte.TabIndex = 0;
-            this.progressCorte.Text = "1";
+            this.progressCorte.Text = "0";
             this.progressCorte.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.progressCorte.Value = 1;
             // 
@@ -623,6 +649,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1312, 544);
+            this.Controls.Add(this.progressRelaxamento);
+            this.Controls.Add(this.lblValor);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.lblQuantidade);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnAtualizar);
@@ -644,7 +673,6 @@
             this.Controls.Add(this.progressLuzes);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.progressRelaxamento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.progressSombrancelha);
             this.Controls.Add(this.label3);
@@ -673,7 +701,6 @@
         private System.Windows.Forms.Label label4;
         private CircularProgressBar.CircularProgressBar progressSombrancelha;
         private System.Windows.Forms.Label label5;
-        private CircularProgressBar.CircularProgressBar progressRelaxamento;
         private System.Windows.Forms.Label label6;
         private CircularProgressBar.CircularProgressBar progressPigCorte;
         private CircularProgressBar.CircularProgressBar progressPigBarba;
@@ -694,5 +721,8 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Label label18;
+        private CircularProgressBar.CircularProgressBar progressRelaxamento;
     }
 }
