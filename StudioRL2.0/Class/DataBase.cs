@@ -218,9 +218,9 @@ namespace StudioRL2._0.Class
         }
 
         public void atualizarValorHistorico(string valor, string idCliente, string idHistorico)
-        {/*
+        {
             try
-            {*/
+            {
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
@@ -266,11 +266,11 @@ namespace StudioRL2._0.Class
                 cmd.CommandText = SQl;
                 cmd.ExecuteNonQuery();
                 conexao.Close();
-            /*}
+            }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message);
-            }*/
+            }
         }
         public string[] autoComplete()
         {
@@ -358,6 +358,255 @@ namespace StudioRL2._0.Class
             {
                 MessageBox.Show(erro.Message);
             }
+        }
+
+        public int returnCountHisotrico()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(*) from historico";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+
+        public int returnCorte()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(corte) from historico where corte like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnBarba()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(barba) from historico where barba like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnPezinho()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Pezinho) from historico where Pezinho like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnSombrancelha()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnSombrancelhaHenna()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnRelaxamento()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnprogressiva()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Progressiva) from historico where Progressiva like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnPigCorte()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnPigBarba()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnLuzes()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Luzes) from historico where Luzes like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnGel()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Gel) from historico where Gel like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnLapis()
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                String SQl = "select count(Lapis) from historico where Lapis like 'S'";
+                cmd.CommandText = SQl;
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
         }
     }
 }

@@ -36,6 +36,7 @@ namespace StudioRL2._0
         private void EditarHistorico_Load(object sender, EventArgs e)
         {
             verificaVars();
+            //arrumar o checkbox d apagar
         }
 
         private void label2_Click(object sender, EventArgs e)
