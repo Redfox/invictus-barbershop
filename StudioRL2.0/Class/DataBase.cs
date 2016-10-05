@@ -360,7 +360,7 @@ namespace StudioRL2._0.Class
             }
         }
 
-        public int returnCountHisotrico()
+        public int returnCountHisotrico(string range)
         {
             int count = 0;
             try
@@ -368,9 +368,19 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(*) from historico";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(*) from historico";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+
                 conexao.Close();
             }
             catch (Exception erro)
@@ -380,7 +390,7 @@ namespace StudioRL2._0.Class
             return count;
         }
 
-        public int returnCorte()
+        public int returnCorte(string range)
         {
             int count = 0;
             try
@@ -388,9 +398,20 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(corte) from historico where corte like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+
+                }else if (range == "todo")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                
                 conexao.Close();
             }
             catch (Exception erro)
@@ -399,7 +420,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnBarba()
+        public int returnBarba(string range)
         {
             int count = 0;
             try
@@ -407,9 +428,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(barba) from historico where barba like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -418,7 +448,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnPezinho()
+        public int returnPezinho(string range)
         {
             int count = 0;
             try
@@ -426,9 +456,19 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Pezinho) from historico where Pezinho like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                    
                 conexao.Close();
             }
             catch (Exception erro)
@@ -437,7 +477,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnSombrancelha()
+        public int returnSombrancelha(string range)
         {
             int count = 0;
             try
@@ -445,9 +485,19 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'  and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                    
                 conexao.Close();
             }
             catch (Exception erro)
@@ -456,7 +506,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnSombrancelhaHenna()
+        public int returnSombrancelhaHenna(string range)
         {
             int count = 0;
             try
@@ -464,9 +514,47 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                    conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+        public int returnRelaxamento(string range)
+        {
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+
                 conexao.Close();
             }
             catch (Exception erro)
@@ -475,7 +563,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnRelaxamento()
+        public int returnprogressiva(string range)
         {
             int count = 0;
             try
@@ -483,9 +571,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -494,7 +591,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnprogressiva()
+        public int returnPigCorte(string range)
         {
             int count = 0;
             try
@@ -502,9 +599,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Progressiva) from historico where Progressiva like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -513,7 +619,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnPigCorte()
+        public int returnPigBarba(string range)
         {
             int count = 0;
             try
@@ -521,9 +627,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -532,7 +647,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnPigBarba()
+        public int returnLuzes(string range)
         {
             int count = 0;
             try
@@ -540,9 +655,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -551,7 +675,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnLuzes()
+        public int returnGel(string range)
         {
             int count = 0;
             try
@@ -559,9 +683,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Luzes) from historico where Luzes like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)
@@ -570,7 +703,7 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-        public int returnGel()
+        public int returnLapis(string range)
         {
             int count = 0;
             try
@@ -578,28 +711,18 @@ namespace StudioRL2._0.Class
                 OdbcConnection conexao = new Connection().Conexao();
                 OdbcCommand cmd = new OdbcCommand("", conexao);
                 conexao.Open();
-                String SQl = "select count(Gel) from historico where Gel like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
-                conexao.Close();
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show(erro.Message);
-            }
-            return count;
-        }
-        public int returnLapis()
-        {
-            int count = 0;
-            try
-            {
-                OdbcConnection conexao = new Connection().Conexao();
-                OdbcCommand cmd = new OdbcCommand("", conexao);
-                conexao.Open();
-                String SQl = "select count(Lapis) from historico where Lapis like 'S'";
-                cmd.CommandText = SQl;
-                count = Convert.ToInt16(cmd.ExecuteScalar());
+                if (range == "Hoje")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 conexao.Close();
             }
             catch (Exception erro)

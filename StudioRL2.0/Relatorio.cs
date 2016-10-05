@@ -13,60 +13,85 @@ namespace StudioRL2._0
 {
     public partial class Relatorio : Form
     {
+        DataBase bd = new DataBase();
+
         public Relatorio()
         {
             InitializeComponent();
+            cboRange.SelectedIndex = 0;
             setMaxProgressBar();
             setValurProgressBar();
         }
-        DataBase bd = new DataBase();
 
         private void Relatorio_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(bd.returnCountHisotrico().ToString());
-            progressCorte.Value = bd.returnCorte();
-            progressCorte.Text = bd.returnCorte().ToString();
+            
         }
-
         private void setMaxProgressBar()
         {
-            progressBarba.Maximum = bd.returnCountHisotrico();
-            progressCorte.Maximum = bd.returnCountHisotrico();
-            progressPigBarba.Maximum = bd.returnCountHisotrico();
-            progressPigCorte.Maximum = bd.returnCountHisotrico();
-            progressLapis.Maximum = bd.returnCountHisotrico();
-            progressGel.Maximum = bd.returnCountHisotrico();
-            progressPezinho.Maximum = bd.returnCountHisotrico();
-            progressSombrancelha.Maximum = bd.returnCountHisotrico();
-            progressSombrancelhaHenna.Maximum = bd.returnCountHisotrico();
-            progressLuzes.Maximum = bd.returnCountHisotrico();
-            progressRelaxamento.Maximum = bd.returnCountHisotrico();
+            progressBarba.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressCorte.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressPigBarba.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressPigCorte.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressLapis.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressGel.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressPezinho.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressSombrancelha.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressSombrancelhaHenna.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressLuzes.Maximum = bd.returnCountHisotrico(cboRange.Text);
+            progressRelaxamento.Maximum = bd.returnCountHisotrico(cboRange.Text);
+
+            lblQuantidade.Text = bd.returnCountHisotrico(cboRange.Text).ToString();
         }
         private void setValurProgressBar()
         {
-            progressBarba.Value = bd.returnBarba();
-            progressCorte.Value = bd.returnCorte();
-            progressPigBarba.Value = bd.returnPigBarba();
-            progressPigCorte.Value = bd.returnPigCorte();
-            progressLapis.Value = bd.returnLapis();
-            progressGel.Value = bd.returnGel();
-            progressPezinho.Value = bd.returnPezinho();
-            progressSombrancelha.Value = bd.returnSombrancelha();
-            progressSombrancelhaHenna.Value = bd.returnSombrancelhaHenna();
-            progressLuzes.Value = bd.returnLuzes();
-            progressRelaxamento.Value = bd.returnRelaxamento();
+            progressBarba.Value = bd.returnBarba(cboRange.Text);
+            progressCorte.Value = bd.returnCorte(cboRange.Text);
+            progressPigBarba.Value = bd.returnPigBarba(cboRange.Text);
+            progressPigCorte.Value = bd.returnPigCorte(cboRange.Text);
+            progressLapis.Value = bd.returnLapis(cboRange.Text);
+            progressGel.Value = bd.returnGel(cboRange.Text);
+            progressPezinho.Value = bd.returnPezinho(cboRange.Text);
+            progressSombrancelha.Value = bd.returnSombrancelha(cboRange.Text);
+            progressSombrancelhaHenna.Value = bd.returnSombrancelhaHenna(cboRange.Text);
+            progressLuzes.Value = bd.returnLuzes(cboRange.Text);
+            progressRelaxamento.Value = bd.returnRelaxamento(cboRange.Text);
 
-            progressBarba.Text = bd.returnBarba().ToString();
-            progressCorte.Text = bd.returnCorte().ToString();
-            progressPigBarba.Text = bd.returnPigBarba().ToString();
-            progressPigCorte.Text = bd.returnPigCorte().ToString();
-            progressLapis.Text = bd.returnLapis().ToString();
-            progressGel.Text = bd.returnGel().ToString() + " ";
-            progressPezinho.Text = bd.returnPezinho().ToString();
-            progressSombrancelha.Text = bd.returnSombrancelha().ToString();
-            progressSombrancelhaHenna.Text = bd.returnSombrancelhaHenna().ToString();
-            progressLuzes.Text = bd.returnLuzes().ToString();
-            progressRelaxamento.Text = bd.returnRelaxamento().ToString();
+            progressBarba.Text = bd.returnBarba(cboRange.Text).ToString();
+            progressCorte.Text = bd.returnCorte(cboRange.Text).ToString();
+            progressPigBarba.Text = bd.returnPigBarba(cboRange.Text).ToString();
+            progressPigCorte.Text = bd.returnPigCorte(cboRange.Text).ToString();
+            progressLapis.Text = bd.returnLapis(cboRange.Text).ToString();
+            progressGel.Text = bd.returnGel(cboRange.Text).ToString();
+            progressPezinho.Text = bd.returnPezinho(cboRange.Text).ToString();
+            progressSombrancelha.Text = bd.returnSombrancelha(cboRange.Text).ToString();
+            progressSombrancelhaHenna.Text = bd.returnSombrancelhaHenna(cboRange.Text).ToString();
+            progressLuzes.Text = bd.returnLuzes(cboRange.Text).ToString();
+            progressRelaxamento.Text = bd.returnRelaxamento(cboRange.Text).ToString();
+        }
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(cboRange.Text);
+        }
+        private void cboRange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            resetProgressBar();
+            setMaxProgressBar();
+            setValurProgressBar();
+        }
+        private void resetProgressBar()
+        {
+            progressBarba.Value = 0;
+            progressCorte.Value = 0;
+            progressPigBarba.Value = 0;
+            progressPigCorte.Value = 0;
+            progressLapis.Value = 0;
+            progressGel.Value = 0;
+            progressPezinho.Value = 0;
+            progressSombrancelha.Value = 0;
+            progressSombrancelhaHenna.Value = 0;
+            progressLuzes.Value = 0;
+            progressRelaxamento.Value = 0;
         }
     }
 }
