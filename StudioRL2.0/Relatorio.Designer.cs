@@ -242,6 +242,10 @@
             "Hoje",
             "Ontem",
             "Mes Anterior",
+            "Dois Meses",
+            "Tres Meses",
+            "Quatro Meses",
+            "Cinco Meses",
             "todo"});
             this.cboRange.Location = new System.Drawing.Point(280, 37);
             this.cboRange.Name = "cboRange";

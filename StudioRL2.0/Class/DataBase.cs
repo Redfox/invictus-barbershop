@@ -7,13 +7,35 @@ namespace StudioRL2._0.Class
 {
     class DataBase
     {
+        string hoje = DateTime.Now.ToString("yyyy-MM-dd");
         string ontem;
+        string mesPassado;
+        string doisMeses;
+        string tresMeses;
+        string quatroMeses;
+        string cincoMeses;
 
         private void setData()
         {
             string diaHoje = DateTime.Now.ToString("dd");
             int diaOntem = Convert.ToInt16(diaHoje) - 1;
             ontem = DateTime.Now.ToString("yyyy-MM-"+ diaOntem);
+
+            string mesAtual = DateTime.Now.ToString("MM");
+            int mesP = Convert.ToInt16(mesAtual) - 1;
+            mesPassado = DateTime.Now.ToString("yyyy-"+ mesP +"-dd");
+
+            int doisM = Convert.ToInt16(mesAtual) - 2;
+            doisMeses = DateTime.Now.ToString("yyyy-" + doisM + "-dd");
+
+            int tresM = Convert.ToInt16(mesAtual) - 3;
+            tresMeses = DateTime.Now.ToString("yyyy-" + tresM + "-dd");
+
+            int quatroM = Convert.ToInt16(mesAtual) - 4;
+            quatroMeses = DateTime.Now.ToString("yyyy-" + quatroM + "-dd");
+
+            int cincoM = Convert.ToInt16(mesAtual) - 5;
+            cincoMeses = DateTime.Now.ToString("yyyy-" + cincoM + "-dd");
         }
 
         public void cadastrarCliente(string nome, string apelido, string endereco, string telFixo, string telCel, string operadora, string whatsapp, string sexo, string infantil, string mensalista)
@@ -389,6 +411,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(*) from historico where DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(*) from historico";
@@ -427,6 +479,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(corte) from historico where corte like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(corte) from historico where corte like 'S'";
@@ -462,6 +544,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(barba) from historico where barba like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(barba) from historico where barba like 'S'";
@@ -494,6 +606,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Pezinho) from historico where Pezinho like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -533,6 +675,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(Sombrancelha) from historico where Sombrancelha like 'S'";
@@ -566,6 +738,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(SombrancelhaHenna) from historico where SombrancelhaHenna like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -604,6 +806,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(Relaxamento) from historico where Relaxamento like 'S'";
@@ -636,6 +868,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select count(Progressiva) from historico where Progressiva like 'S'and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Progressiva) from historico where Progressiva like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -674,6 +936,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(PigmentacaoCorte) from historico where PigmentacaoCorte like 'S'";
@@ -706,6 +998,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(PigmentacaoBarba) from historico where PigmentacaoBarba like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -744,6 +1066,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Luzes) from historico where Luzes like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(Luzes) from historico where Luzes like 'S'";
@@ -776,6 +1128,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Gel) from historico where Gel like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
@@ -814,6 +1196,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select count(Lapis) from historico where Lapis like 'S' and DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select count(Lapis) from historico where Lapis like 'S'";
@@ -849,6 +1261,36 @@ namespace StudioRL2._0.Class
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select sum(valor) from historico where DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
                 else if (range == "todo")
                 {
                     String SQl = "select sum(valor) from historico";
@@ -863,7 +1305,6 @@ namespace StudioRL2._0.Class
             }
             return count;
         }
-
         public int returnValorPago(string range)
         {
             setData();
@@ -882,6 +1323,36 @@ namespace StudioRL2._0.Class
                 else if (range == "Ontem")
                 {
                     String SQl = "select sum(ValorPago) from historico where DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Mes Anterior")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + mesPassado + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Dois Meses")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + doisMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Tres Meses")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + tresMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Quatro Meses")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + quatroMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Cinco Meses")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + cincoMeses + " 00:00:00' and '" + hoje + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
