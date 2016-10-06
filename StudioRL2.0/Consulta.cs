@@ -137,8 +137,16 @@ namespace StudioRL2._0
         private void txtValorPago_KeyUp(object sender, KeyEventArgs e)
         {
             Pagamento pag = new Pagamento();
-            if(txtValorPago.ReadOnly == false)
-                txtValorRestante.Text = pag.atualizarValorRestante(Convert.ToInt16(txtValorAberto.Text), Convert.ToInt16(txtValorPago.Text)).ToString();
+            try
+            {
+                if (txtValorPago.ReadOnly == false)
+                    txtValorRestante.Text = pag.atualizarValorRestante(Convert.ToInt16(txtValorAberto.Text), Convert.ToInt16(txtValorPago.Text)).ToString();
+            }
+            catch (Exception erro)
+            {
+
+            }
+            
         }
         private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -413,7 +421,7 @@ namespace StudioRL2._0
                 DataSet ds = new DataSet();
                 conexao.Open();
 
-                cmd = new OdbcCommand("Select ID as 'ID do Corte', DataC as 'Data do corte',  Valor, ValorEmAberto, Status, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis from historico where ID_Cliente like '" + data[0] + "' and Status like 'Em aberto' or Status like 'Em Processo' order by DataC", conexao);
+                cmd = new OdbcCommand("Select ID as 'ID do Corte', DataC as 'Data do corte',  Valor, ValorEmAberto, Status, Corte, Barba, Pezinho, Sombrancelha, SombrancelhaHenna as 'Sombrancelha de Henna', Relaxamento, Progressiva, PigmentacaoCorte as 'Pigmentacao Corte', PigmentacaoBarba as 'Pigmentacao Barba', Luzes, Gel, Lapis from historico where ID_Cliente like '" + data[0] + "' and Status like 'Em aberto' or Status like 'Em Processo' order by DataC DESC", conexao);
 
                 adapter = new OdbcDataAdapter(cmd);
                 ds = new DataSet();

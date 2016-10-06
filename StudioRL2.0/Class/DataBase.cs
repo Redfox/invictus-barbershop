@@ -845,13 +845,49 @@ namespace StudioRL2._0.Class
                 }
                 else if (range == "Ontem")
                 {
-                    String SQl = "select count(valor) from historico where valor like 'S' and DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    String SQl = "select sum(valor) from historico where DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }
                 else if (range == "todo")
                 {
                     String SQl = "select sum(valor) from historico";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                conexao.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
+            return count;
+        }
+
+        public int returnValorPago(string range)
+        {
+            setData();
+            int count = 0;
+            try
+            {
+                OdbcConnection conexao = new Connection().Conexao();
+                OdbcCommand cmd = new OdbcCommand("", conexao);
+                conexao.Open();
+                if (range == "Hoje")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + DateTime.Now.ToString("yyyy-MM-dd 00:00:00") + "' and '" + DateTime.Now.ToString("yyyy-MM-dd 23:59:59") + "'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "Ontem")
+                {
+                    String SQl = "select sum(ValorPago) from historico where DataC between '" + ontem + " 00:00:00' and '" + ontem + " 23:59:59'";
+                    cmd.CommandText = SQl;
+                    count = Convert.ToInt16(cmd.ExecuteScalar());
+                }
+                else if (range == "todo")
+                {
+                    String SQl = "select sum(ValorPago) from historico";
                     cmd.CommandText = SQl;
                     count = Convert.ToInt16(cmd.ExecuteScalar());
                 }

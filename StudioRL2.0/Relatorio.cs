@@ -18,13 +18,13 @@ namespace StudioRL2._0
         public Relatorio()
         {
             InitializeComponent();
-            
-            lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() +",00";
         }
 
         private void Relatorio_Load(object sender, EventArgs e)
         {
-        
+            lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text) + ",00";
+            lblPago.Text = "R$ " + bd.returnValorPago(cboRange.Text) + ",00";
+            lblRestante.Text = "R$ " + (bd.returnValorTotal(cboRange.Text) - bd.returnValorPago(cboRange.Text)) + ",00";
         }
         private void setMaxProgressBar()
         {
@@ -79,6 +79,8 @@ namespace StudioRL2._0
             setMaxProgressBar();
             setValueProgressBar();
             lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() + ",00";
+            lblPago.Text = "R$ " + bd.returnValorPago(cboRange.Text) + ",00";
+            lblRestante.Text = "R$ " + (bd.returnValorTotal(cboRange.Text) - bd.returnValorPago(cboRange.Text)) + ",00";
         }
         private void resetProgressBar()
         {

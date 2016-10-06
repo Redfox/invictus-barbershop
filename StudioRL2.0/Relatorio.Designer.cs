@@ -49,6 +49,10 @@
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.lblValor = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.lblPago = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblRestante = new System.Windows.Forms.Label();
             this.progressRelaxamento = new CircularProgressBar.CircularProgressBar();
             this.progressSombrancelhaHenna = new CircularProgressBar.CircularProgressBar();
             this.progressLapis = new CircularProgressBar.CircularProgressBar();
@@ -296,11 +300,55 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(38, 470);
+            this.label18.Location = new System.Drawing.Point(31, 470);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(163, 20);
             this.label18.TabIndex = 33;
             this.label18.Text = "Valor total dos cortes:";
+            // 
+            // lblPago
+            // 
+            this.lblPago.AutoSize = true;
+            this.lblPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPago.ForeColor = System.Drawing.Color.Black;
+            this.lblPago.Location = new System.Drawing.Point(198, 494);
+            this.lblPago.Name = "lblPago";
+            this.lblPago.Size = new System.Drawing.Size(18, 20);
+            this.lblPago.TabIndex = 37;
+            this.lblPago.Text = "1";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(104, 492);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 20);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "Valor pago:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(81, 514);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(113, 20);
+            this.label20.TabIndex = 38;
+            this.label20.Text = "Valor restante:";
+            // 
+            // lblRestante
+            // 
+            this.lblRestante.AutoSize = true;
+            this.lblRestante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRestante.ForeColor = System.Drawing.Color.Black;
+            this.lblRestante.Location = new System.Drawing.Point(198, 515);
+            this.lblRestante.Name = "lblRestante";
+            this.lblRestante.Size = new System.Drawing.Size(18, 20);
+            this.lblRestante.TabIndex = 39;
+            this.lblRestante.Text = "1";
             // 
             // progressRelaxamento
             // 
@@ -649,6 +697,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1312, 544);
+            this.Controls.Add(this.lblRestante);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lblPago);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.progressRelaxamento);
             this.Controls.Add(this.lblValor);
             this.Controls.Add(this.label18);
@@ -724,5 +776,9 @@
         private System.Windows.Forms.Label lblValor;
         private System.Windows.Forms.Label label18;
         private CircularProgressBar.CircularProgressBar progressRelaxamento;
+        private System.Windows.Forms.Label lblPago;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblRestante;
     }
 }
