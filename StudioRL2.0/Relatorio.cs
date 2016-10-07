@@ -76,24 +76,11 @@ namespace StudioRL2._0
         private void cboRange_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetProgressBar();
-
-            if (bd.returnCountHisotrico(cboRange.Text) == 0)
-            {
-                lblValor.Text = "R$ 00,00";
-                lblPago.Text = "R$ 00,00";
-                lblRestante.Text = "R$ 00,00";
-                lblQuantidade.Text = "0";
-                resetProgressBar();
-            }
-            else
-            {
-                setMaxProgressBar();
-                setValueProgressBar();
-                lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() + ",00";
-                lblPago.Text = "R$ " + bd.returnValorPago(cboRange.Text) + ",00";
-                lblRestante.Text = "R$ " + (bd.returnValorTotal(cboRange.Text) - bd.returnValorPago(cboRange.Text)) + ",00";
-            }
-            
+            setMaxProgressBar();
+            setValueProgressBar();
+            lblValor.Text = "R$ " + bd.returnValorTotal(cboRange.Text).ToString() + ",00";
+            lblPago.Text = "R$ " + bd.returnValorPago(cboRange.Text) + ",00";
+            lblRestante.Text = "R$ " + (bd.returnValorTotal(cboRange.Text) - bd.returnValorPago(cboRange.Text)) + ",00";
         }
         private void resetProgressBar()
         {
@@ -109,5 +96,6 @@ namespace StudioRL2._0
             progressLuzes.Value = 0;
             progressRelaxamento.Value = 0;
         }
+        
     }
 }
