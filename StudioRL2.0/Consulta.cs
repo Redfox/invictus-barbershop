@@ -102,12 +102,27 @@ namespace StudioRL2._0
         }
         private void btnConcluir_Click(object sender, EventArgs e)
         {
-            verificaDados();
-            if (chkPagar.Checked)
-                pagar = true;
-            bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
-            btnBuscar_Click((object)sender, (EventArgs)e);
-            txtValor.Clear();
+            if (txtValor.Text == "")
+            {
+                MessageBox.Show("Campo valor vazio");
+            }
+            else
+            {
+                if (IsNumeric(txtValor.Text))
+                {
+                    verificaDados();
+                    if (chkPagar.Checked)
+                        pagar = true;
+                    bd.cadastarConsulta(data[0], corte, barba, pezinho, sombancelha, sombancelhaHenna, relaxamento, progressiva, pigCorte, pigbarba, luzes, gel, lapis, txtValor.Text, status, txtValor.Text, pagar);
+                    btnBuscar_Click((object)sender, (EventArgs)e);
+                    clear();
+                }
+                else
+                {
+                    MessageBox.Show("Valor invalido");
+                }
+            }
+            
         }
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -439,6 +454,41 @@ namespace StudioRL2._0
                 MessageBox.Show(erro.Message);
             }
 
+        }
+        private void clear()
+        {
+            txtValor.Clear();
+
+            chkBarba.Checked = false;
+            chkCorte.Checked = false;
+            chkData.Checked = false;
+            chkFrequ.Checked = false;
+            chkGel.Checked = false;
+            chkInfantil.Checked = false;
+            chkLapis.Checked = false;
+            chkLuzes.Checked = false;
+            chkMensalista.Checked = false;
+            chkPagar.Checked = false;
+            chkPezinho.Checked = false;
+            chkPigmentacaoBarba.Checked = false;
+            chkPigmentacaoCorte.Checked = false;
+            chkProgressiva.Checked = false;
+            chkRelaxamento.Checked = false;
+            chkSombrancelha.Checked = false;
+            chkSombrancelhaHenna.Checked = false;
+            chkPagar.Checked = false;
+        }
+        private bool IsNumeric(string prstValor)
+        {
+            char[] AIM_stDatachars = prstValor.ToCharArray();
+
+            foreach (var AIM_stDatachar in AIM_stDatachars)
+            {
+                if (!char.IsDigit(AIM_stDatachar))
+                    return false;
+            }
+
+            return true;
         }
 
         //public
