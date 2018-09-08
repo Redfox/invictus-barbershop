@@ -8,3 +8,4 @@ C:\projetos\studioRL\Studio-RL\StudioRL\obj\Debug\StudioRL.csproj.CoreCompileInp
 C:\projetos\studioRL\Studio-RL\StudioRL\obj\Debug\StudioRL.exe
 C:\projetos\studioRL\Studio-RL\StudioRL\obj\Debug\StudioRL.pdb
 C:\projetos\studioRL\Studio-RL\StudioRL\obj\Debug\StudioRL.Main.resources
+C:\projetos\studioRL\Studio-RL\StudioRL\obj\Debug\StudioRL.csprojResolveAssemblyReference.cache

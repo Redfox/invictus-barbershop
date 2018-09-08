@@ -33,17 +33,25 @@
             this.pnlExit = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.PnlHeader = new System.Windows.Forms.Panel();
-            this.lblRelatorio = new System.Windows.Forms.Label();
-            this.lblGerenciar = new System.Windows.Forms.Label();
-            this.lblCadastro = new System.Windows.Forms.Label();
-            this.lblConsulta = new System.Windows.Forms.Label();
-            this.PnlTitle = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.PnlHome = new System.Windows.Forms.Panel();
+            this.btnMain = new System.Windows.Forms.Button();
+            this.pnlConsulta = new System.Windows.Forms.Panel();
+            this.btnConsulta = new System.Windows.Forms.Button();
+            this.pnlCadastro = new System.Windows.Forms.Panel();
+            this.btnCadastro = new System.Windows.Forms.Button();
+            this.pnlGerenciar = new System.Windows.Forms.Panel();
+            this.pnlRelatorio = new System.Windows.Forms.Panel();
+            this.btnRelatorio = new System.Windows.Forms.Button();
+            this.btnGerenciar = new System.Windows.Forms.Button();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.PnlMinimizar.SuspendLayout();
             this.pnlExit.SuspendLayout();
             this.PnlHeader.SuspendLayout();
-            this.PnlTitle.SuspendLayout();
+            this.PnlHome.SuspendLayout();
+            this.pnlConsulta.SuspendLayout();
+            this.pnlCadastro.SuspendLayout();
+            this.pnlGerenciar.SuspendLayout();
+            this.pnlRelatorio.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlMinimizar
@@ -70,6 +78,7 @@
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.Text = "-";
             this.btnMinimize.UseVisualStyleBackColor = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // pnlExit
             // 
@@ -100,12 +109,12 @@
             // PnlHeader
             // 
             this.PnlHeader.BackColor = System.Drawing.Color.Black;
-            this.PnlHeader.Controls.Add(this.lblRelatorio);
-            this.PnlHeader.Controls.Add(this.lblGerenciar);
-            this.PnlHeader.Controls.Add(this.lblCadastro);
-            this.PnlHeader.Controls.Add(this.lblConsulta);
+            this.PnlHeader.Controls.Add(this.pnlRelatorio);
+            this.PnlHeader.Controls.Add(this.pnlGerenciar);
+            this.PnlHeader.Controls.Add(this.pnlCadastro);
+            this.PnlHeader.Controls.Add(this.pnlConsulta);
             this.PnlHeader.Controls.Add(this.PnlMinimizar);
-            this.PnlHeader.Controls.Add(this.PnlTitle);
+            this.PnlHeader.Controls.Add(this.PnlHome);
             this.PnlHeader.Controls.Add(this.pnlExit);
             this.PnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlHeader.Location = new System.Drawing.Point(0, 0);
@@ -114,83 +123,142 @@
             this.PnlHeader.TabIndex = 2;
             this.PnlHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlHeader_MouseMove);
             // 
-            // lblRelatorio
+            // PnlHome
             // 
-            this.lblRelatorio.AutoSize = true;
-            this.lblRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelatorio.ForeColor = System.Drawing.Color.White;
-            this.lblRelatorio.Location = new System.Drawing.Point(509, 0);
-            this.lblRelatorio.Name = "lblRelatorio";
-            this.lblRelatorio.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
-            this.lblRelatorio.Size = new System.Drawing.Size(114, 78);
-            this.lblRelatorio.TabIndex = 5;
-            this.lblRelatorio.Text = "Relatorio";
+            this.PnlHome.BackColor = System.Drawing.Color.Black;
+            this.PnlHome.Controls.Add(this.btnMain);
+            this.PnlHome.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PnlHome.Location = new System.Drawing.Point(0, 0);
+            this.PnlHome.Name = "PnlHome";
+            this.PnlHome.Size = new System.Drawing.Size(173, 80);
+            this.PnlHome.TabIndex = 2;
             // 
-            // lblGerenciar
+            // btnMain
             // 
-            this.lblGerenciar.AutoSize = true;
-            this.lblGerenciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGerenciar.ForeColor = System.Drawing.Color.White;
-            this.lblGerenciar.Location = new System.Drawing.Point(387, 0);
-            this.lblGerenciar.Name = "lblGerenciar";
-            this.lblGerenciar.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
-            this.lblGerenciar.Size = new System.Drawing.Size(123, 78);
-            this.lblGerenciar.TabIndex = 4;
-            this.lblGerenciar.Text = "Gerenciar";
+            this.btnMain.BackColor = System.Drawing.Color.Black;
+            this.btnMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMain.FlatAppearance.BorderSize = 0;
+            this.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMain.Location = new System.Drawing.Point(0, 0);
+            this.btnMain.Name = "btnMain";
+            this.btnMain.Size = new System.Drawing.Size(173, 80);
+            this.btnMain.TabIndex = 6;
+            this.btnMain.Text = "StudioRL";
+            this.btnMain.UseVisualStyleBackColor = false;
             // 
-            // lblCadastro
+            // pnlConsulta
             // 
-            this.lblCadastro.AutoSize = true;
-            this.lblCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCadastro.ForeColor = System.Drawing.Color.White;
-            this.lblCadastro.Location = new System.Drawing.Point(282, 0);
-            this.lblCadastro.Name = "lblCadastro";
-            this.lblCadastro.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
-            this.lblCadastro.Size = new System.Drawing.Size(114, 78);
-            this.lblCadastro.TabIndex = 3;
-            this.lblCadastro.Text = "Cadastro";
+            this.pnlConsulta.Controls.Add(this.btnConsulta);
+            this.pnlConsulta.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlConsulta.Location = new System.Drawing.Point(173, 0);
+            this.pnlConsulta.Name = "pnlConsulta";
+            this.pnlConsulta.Size = new System.Drawing.Size(113, 80);
+            this.pnlConsulta.TabIndex = 3;
             // 
-            // lblConsulta
+            // btnConsulta
             // 
-            this.lblConsulta.AutoSize = true;
-            this.lblConsulta.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConsulta.ForeColor = System.Drawing.Color.White;
-            this.lblConsulta.Location = new System.Drawing.Point(173, 0);
-            this.lblConsulta.Name = "lblConsulta";
-            this.lblConsulta.Padding = new System.Windows.Forms.Padding(15, 27, 15, 27);
-            this.lblConsulta.Size = new System.Drawing.Size(113, 78);
-            this.lblConsulta.TabIndex = 3;
-            this.lblConsulta.Text = "Consulta";
+            this.btnConsulta.BackColor = System.Drawing.Color.Black;
+            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsulta.Location = new System.Drawing.Point(0, 0);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Size = new System.Drawing.Size(113, 80);
+            this.btnConsulta.TabIndex = 7;
+            this.btnConsulta.Text = "Consulta";
+            this.btnConsulta.UseVisualStyleBackColor = false;
             // 
-            // PnlTitle
+            // pnlCadastro
             // 
-            this.PnlTitle.BackColor = System.Drawing.Color.Black;
-            this.PnlTitle.Controls.Add(this.panel2);
-            this.PnlTitle.Controls.Add(this.label1);
-            this.PnlTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.PnlTitle.Name = "PnlTitle";
-            this.PnlTitle.Size = new System.Drawing.Size(173, 80);
-            this.PnlTitle.TabIndex = 2;
+            this.pnlCadastro.BackColor = System.Drawing.Color.Transparent;
+            this.pnlCadastro.Controls.Add(this.btnCadastro);
+            this.pnlCadastro.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlCadastro.Location = new System.Drawing.Point(286, 0);
+            this.pnlCadastro.Name = "pnlCadastro";
+            this.pnlCadastro.Size = new System.Drawing.Size(113, 80);
+            this.pnlCadastro.TabIndex = 4;
             // 
-            // panel2
+            // btnCadastro
             // 
-            this.panel2.Location = new System.Drawing.Point(229, 84);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 2;
+            this.btnCadastro.BackColor = System.Drawing.Color.Black;
+            this.btnCadastro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCadastro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCadastro.FlatAppearance.BorderSize = 0;
+            this.btnCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastro.Location = new System.Drawing.Point(0, 0);
+            this.btnCadastro.Name = "btnCadastro";
+            this.btnCadastro.Size = new System.Drawing.Size(113, 80);
+            this.btnCadastro.TabIndex = 8;
+            this.btnCadastro.Text = "Cadastro";
+            this.btnCadastro.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // pnlGerenciar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(38, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 27);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "StudioRL";
+            this.pnlGerenciar.BackColor = System.Drawing.Color.Transparent;
+            this.pnlGerenciar.Controls.Add(this.btnGerenciar);
+            this.pnlGerenciar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlGerenciar.Location = new System.Drawing.Point(399, 0);
+            this.pnlGerenciar.Name = "pnlGerenciar";
+            this.pnlGerenciar.Size = new System.Drawing.Size(113, 80);
+            this.pnlGerenciar.TabIndex = 5;
+            // 
+            // pnlRelatorio
+            // 
+            this.pnlRelatorio.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRelatorio.Controls.Add(this.btnRelatorio);
+            this.pnlRelatorio.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlRelatorio.Location = new System.Drawing.Point(512, 0);
+            this.pnlRelatorio.Name = "pnlRelatorio";
+            this.pnlRelatorio.Size = new System.Drawing.Size(113, 80);
+            this.pnlRelatorio.TabIndex = 6;
+            // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.BackColor = System.Drawing.Color.Black;
+            this.btnRelatorio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRelatorio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRelatorio.FlatAppearance.BorderSize = 0;
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorio.Location = new System.Drawing.Point(0, 0);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(113, 80);
+            this.btnRelatorio.TabIndex = 9;
+            this.btnRelatorio.Text = "Relatorio";
+            this.btnRelatorio.UseVisualStyleBackColor = false;
+            // 
+            // btnGerenciar
+            // 
+            this.btnGerenciar.BackColor = System.Drawing.Color.Black;
+            this.btnGerenciar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGerenciar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerenciar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGerenciar.FlatAppearance.BorderSize = 0;
+            this.btnGerenciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGerenciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerenciar.Location = new System.Drawing.Point(0, 0);
+            this.btnGerenciar.Name = "btnGerenciar";
+            this.btnGerenciar.Size = new System.Drawing.Size(113, 80);
+            this.btnGerenciar.TabIndex = 10;
+            this.btnGerenciar.Text = "Gerenciar";
+            this.btnGerenciar.UseVisualStyleBackColor = false;
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(0, 80);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1073, 476);
+            this.pnlMain.TabIndex = 3;
             // 
             // Main
             // 
@@ -198,18 +266,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1073, 556);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.PnlHeader);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.PnlMinimizar.ResumeLayout(false);
             this.pnlExit.ResumeLayout(false);
             this.PnlHeader.ResumeLayout(false);
-            this.PnlHeader.PerformLayout();
-            this.PnlTitle.ResumeLayout(false);
-            this.PnlTitle.PerformLayout();
+            this.PnlHome.ResumeLayout(false);
+            this.pnlConsulta.ResumeLayout(false);
+            this.pnlCadastro.ResumeLayout(false);
+            this.pnlGerenciar.ResumeLayout(false);
+            this.pnlRelatorio.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -218,14 +290,18 @@
         private System.Windows.Forms.Panel PnlMinimizar;
         private System.Windows.Forms.Panel pnlExit;
         private System.Windows.Forms.Panel PnlHeader;
-        private System.Windows.Forms.Label lblRelatorio;
-        private System.Windows.Forms.Label lblGerenciar;
-        private System.Windows.Forms.Label lblCadastro;
-        private System.Windows.Forms.Label lblConsulta;
-        private System.Windows.Forms.Panel PnlTitle;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PnlHome;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnMain;
+        private System.Windows.Forms.Panel pnlConsulta;
+        private System.Windows.Forms.Button btnConsulta;
+        private System.Windows.Forms.Panel pnlCadastro;
+        private System.Windows.Forms.Button btnCadastro;
+        private System.Windows.Forms.Panel pnlGerenciar;
+        private System.Windows.Forms.Panel pnlRelatorio;
+        private System.Windows.Forms.Button btnGerenciar;
+        private System.Windows.Forms.Button btnRelatorio;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
