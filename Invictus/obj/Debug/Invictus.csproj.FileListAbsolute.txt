@@ -1,0 +1,13 @@
+C:\projetos\studioRL\Studio-RL\Invictus\bin\Debug\Invictus.exe.config
+C:\projetos\studioRL\Studio-RL\Invictus\bin\Debug\Invictus.exe
+C:\projetos\studioRL\Studio-RL\Invictus\bin\Debug\Invictus.pdb
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.csprojResolveAssemblyReference.cache
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.Form1.resources
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.Properties.Resources.resources
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.View.Cadastro.resources
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.View.Home.resources
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.View.Main.resources
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.csproj.GenerateResource.Cache
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.csproj.CoreCompileInputs.cache
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.exe
+C:\projetos\studioRL\Studio-RL\Invictus\obj\Debug\Invictus.pdb
